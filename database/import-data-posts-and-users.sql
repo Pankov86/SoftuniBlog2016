@@ -29,6 +29,17 @@ INSERT INTO posts (title, content, date, user_id) VALUES ('<p>Amazon Associates'
 <p>Each item purchased through your Amazon links give you a commission. It doesn’t take high volume traffic to achieve results, either. I began making money with the program when I only had 1,000 hits per month on my site. They can apply your earnings to your Amazon account balance, issue you a check, or direct deposit into your bank account. If you love Amazon, you’ll love their associate’s program. Click here for another Lifehack dedicated to Amazon Associates.</p>
 ', '2016-04-07 11:25:40', 2);
 
+INSERT INTO groups (group_name) VALUE ('admin');
+INSERT INTO groups (group_name) VALUE ('user');
+
+INSERT INTO u_g_interaction (user_id, group_id) VALUES (1, 1);
+INSERT INTO u_g_interaction (user_id, group_id) VALUES (2, 2);
+INSERT INTO u_g_interaction (user_id, group_id) VALUES (3, 2);
+INSERT INTO u_g_interaction (user_id, group_id) VALUES (4, 2);
+INSERT INTO u_g_interaction (user_id, group_id) VALUES (5, 2);
+INSERT INTO u_g_interaction (user_id, group_id) VALUES (6, 2);
+INSERT INTO u_g_interaction (user_id, group_id) VALUES (7, 2);
+
 INSERT INTO posts (title, content, date, user_id) VALUES ('Rakuten Linkshare', '<p>Amazon and Google are far from your only options for online advertising. Rakuten Linkshare is a great place to search for other affiliates for your ads. Through their program, you can get customized ad links, email links, and banner ads for Starbucks, Walmart, iTunes, and a slew of other popular brands. With this program, you can also find smaller companies, regional or specialized brands, and more. I run a combination of Google, Amazon, and Rakuten’s programs, and my monthly income is approximately $150 from these programs. It’s not a lot of money, but it’s also not a lot of work for residual (it means recurring…since the ads are permanent…) income.</p>
 ', '2016-01-17 11:27:50', 5);
 
