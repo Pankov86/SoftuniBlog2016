@@ -26,3 +26,18 @@ CREATE TABLE posts
 );
 
 CREATE INDEX fk_users_posts_idx ON posts (user_id);
+
+CREATE TABLE groups
+( 
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	group_name VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE u_g_interaction
+(
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	user_id INT NOT NULL,
+	group_id INT NOT NULL,
+	CONSTRAINT fk_users_groups FOREIGN KEY (user_id) REFERENCES users (id),
+	CONSTRAINT fk_groups_users FOREIGN KEY (group_id) REFERENCES groups (id)
+);
