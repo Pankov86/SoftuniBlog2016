@@ -73,16 +73,27 @@ class UsersController extends BaseController
             $userId = $this->model->register(
                 $username, $password, $full_name, $email);
             if ($userId){
-                $_SESSION['username'] = $username;
-                $_SESSION['user_id'] = $userId;
-                
-                $this->addInfoMessage("Registration successful.");
-                $this->redirect('');
+                //Find id of group 'user'
+                $group = 'user';
+                $group_id = $this->model->getGroupIdByGroupName($group);
+
+                //Insert user_id and group_id in u_g_interaction table
+                $result = $this->model->fillUGInteraction($userId, $group_id);
+
+                if ($result){
+                    $_SESSION['group_id'] = $group_id;
+                    $_SESSION['username'] = $username;
+                    $_SESSION['user_id'] = $userId;
+                    $this->addInfoMessage("Registration successful.");
+                    $this->redirect('');
+                }
+                else{
+                    $this->addErrorMessage("Error: Registration failed.");
+                }
             }
             else{
                 $this->addErrorMessage("Error: Registration failed.");
             }
-
         }
     }
 
