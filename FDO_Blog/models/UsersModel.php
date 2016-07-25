@@ -67,7 +67,26 @@ class UsersModel extends BaseModel
             "SELECT LAST_INSERT_ID()")->fetch_row()[0];
         return $user_id;
     }
-
+    
+    public function getGroupIdByGroupName($group)
+    {
+        $statement = self::$db->prepare(
+            "SELECT id FROM groups WHERE group_name = ?");
+        $statement->bind_param("s", $group);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_assoc();
+        return $result['id'];
+    }
+    
+    public function fillUGInteraction($user_id, $group_id)
+    {
+        $statement = self::$db->prepare("INSERT INTO u_g_interaction (user_id, group_id) VALUES (?, ?)");
+        $statement->bind_param('ii', $user_id, $group_id);
+        $statement->execute();
+        $result = $statement->affected_rows;
+        return $result;
+    }
+    
     public function getGroupById(int $id)
     {
         $statement = self::$db->prepare(

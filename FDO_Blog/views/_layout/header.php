@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="<?=APP_ROOT?>/content/styles/styles.css" />
+    <link rel="stylesheet"  href="<?=APP_ROOT?>/content/styles/styles.css" type="text/css"/>
     <link rel="icon" href="<?=APP_ROOT?>/content/images/favicon.ico" />
     <script src="<?=APP_ROOT?>/content/scripts/jquery-3.0.0.min.js"></script>
     <script src="<?=APP_ROOT?>/content/scripts/blog-scripts.js"></script>
