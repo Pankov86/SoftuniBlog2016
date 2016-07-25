@@ -71,16 +71,18 @@ class UsersController extends BaseController
             }
 
             $userId = $this->model->register(
-                $username, $password, $full_name);
+                $username, $password, $full_name, $email);
             if ($userId){
                 $_SESSION['username'] = $username;
                 $_SESSION['user_id'] = $userId;
+                
                 $this->addInfoMessage("Registration successful.");
                 $this->redirect('');
             }
             else{
                 $this->addErrorMessage("Error: Registration failed.");
             }
+
         }
     }
 
