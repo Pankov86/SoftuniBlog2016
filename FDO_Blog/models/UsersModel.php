@@ -50,6 +50,14 @@ class UsersModel extends BaseModel
             "ORDER BY username");
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function checkUniqueUserAndMail(
+        string $username, string $email)
+    {
+        $query = self::$db->query("select * from users where username = '$username' or email = '$email'");
+        return mysqli_num_rows($query);
+    }
+    
     
     public function register(
         string $username, string $password, string $full_name, string $email)

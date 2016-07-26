@@ -70,29 +70,35 @@ class UsersController extends BaseController
                 $this->setValidationError("email", "E-mail not valid.");
             }
 
-            $userId = $this->model->register(
-                $username, $password, $full_name, $email);
-            if ($userId){
-                //Find id of group 'user'
-                $group = 'user';
-                $group_id = $this->model->getGroupIdByGroupName($group);
+            $result = $this->model->checkUniqueUserAndMail($username, $email);
+            if ($result == 0){
+                $userId = $this->model->register(
+                    $username, $password, $full_name, $email);
+                if ($userId){
+                    //Find id of group 'user'
+                    $group = 'user';
+                    $group_id = $this->model->getGroupIdByGroupName($group);
 
-                //Insert user_id and group_id in u_g_interaction table
-                $result = $this->model->fillUGInteraction($userId, $group_id);
+                    //Insert user_id and group_id in u_g_interaction table
+                    $result = $this->model->fillUGInteraction($userId, $group_id);
 
-                if ($result){
-                    $_SESSION['group_id'] = $group_id;
-                    $_SESSION['username'] = $username;
-                    $_SESSION['user_id'] = $userId;
-                    $this->addInfoMessage("Registration successful.");
-                    $this->redirect('');
+                    if ($result){
+                        $_SESSION['group_id'] = $group_id;
+                        $_SESSION['username'] = $username;
+                        $_SESSION['user_id'] = $userId;
+                        $this->addInfoMessage("Registration successful.");
+                        $this->redirect('');
+                    }
+                    else{
+                        $this->addErrorMessage("Error: Registration failed.");
+                    }
                 }
                 else{
                     $this->addErrorMessage("Error: Registration failed.");
                 }
             }
             else{
-                $this->addErrorMessage("Error: Registration failed.");
+                $this->addErrorMessage("Error: Username or email already exists.");
             }
         }
     }
