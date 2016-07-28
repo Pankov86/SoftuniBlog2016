@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2016 at 12:11 PM
+-- Generation Time: Jul 28, 2016 at 12:14 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -47,7 +47,8 @@ INSERT INTO `tags` (`id`, `tag_name`) VALUES
 --
 ALTER TABLE `tags`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `tag_name_UNIQUE` (`tag_name`);
+  ADD UNIQUE KEY `tag_name_UNIQUE` (`tag_name`),
+  ADD UNIQUE KEY `tag_name` (`tag_name`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -57,7 +58,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
