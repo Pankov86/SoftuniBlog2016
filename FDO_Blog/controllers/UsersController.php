@@ -127,6 +127,16 @@ class UsersController extends BaseController
         }
     }
 
+    public function profile()
+    {
+        $this->authorize();
+        
+        $id = $_SESSION['user_id'];
+        $this->user_info = $this->model->getUserInfo($id);
+//        $this->user_group = $this->model->getGroupById($id);
+//        $this->user_activity = $this->model->getActivity($id);
+    }
+    
     public function logout()
     {
 		session_destroy();

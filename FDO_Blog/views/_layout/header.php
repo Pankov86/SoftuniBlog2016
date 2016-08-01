@@ -23,7 +23,7 @@
         <a href="<?=APP_ROOT?>/posts/viewAllPosts">All Posts</a>
         <a href="<?=APP_ROOT?>/posts">User Posts</a>
         <a href="<?=APP_ROOT?>/posts/create">Create Post</a>
-        <a href="<?=APP_ROOT?>/users">User Info</a>
+
 
     <?php else: ?>
         <a href="<?=APP_ROOT?>/users/login">Login</a>
@@ -33,7 +33,7 @@
 
     <?php if ($this->isLoggedIn) : ?>
         <div id="logged-in-info">
-            <span>Hello, <b><?=htmlspecialchars($_SESSION['username'])?></b></span>
+            <span>Hello,<a href="<?=APP_ROOT?>/users/profile"><b><?=htmlspecialchars($_SESSION['username'])?></b></a></span>
             <form method="post" action="<?=APP_ROOT?>/users/logout">
                 <input type="submit" value="Logout"/>
             </form>

@@ -6,6 +6,8 @@ class UsersModel extends BaseModel
     {
         
     }
+    
+  
 
     public function makeAdmin($id)
     {
@@ -36,9 +38,18 @@ class UsersModel extends BaseModel
     
     public function getUserInfo($id)
     {
-        $statement = self::$db->query(
-            "SELECT * FROM users WHERE id = $id");
-        return $statement->fetch_all(MYSQLI_ASSOC);
+        $statement = self::$db->prepare(
+            "SELECT u.username, g.group_name, u.full_name, u.email, a.comments_count, a.points, a.points_given_by_user
+  FROM users u
+  join u_g_interaction ugi on ugi.user_id = u.id
+  join groups g on ugi.group_id = g.id
+  join activity a on a.user_id = u.id
+
+WHERE u.id = ?");
+        $statement->bind_param("i",$id);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_assoc();
+        return $result;
     }
 
     public function getAll(): array
@@ -102,7 +113,7 @@ class UsersModel extends BaseModel
         $statement->bind_param("i", $id);
         $statement->execute();
         $result = $statement->get_result()->fetch_assoc();
-        return $result['user_group'];        
+        return $result['group_name'];
     }
     
     public function login(string $username, string $password)
