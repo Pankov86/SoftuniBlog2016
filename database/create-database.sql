@@ -22,7 +22,8 @@ CREATE TABLE posts
     content TEXT NOT NULL,
     date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     user_id INT(11),
-    CONSTRAINT fk_users_posts FOREIGN KEY (user_id) REFERENCES users (id)
+    CONSTRAINT fk_users_posts FOREIGN KEY (user_id) REFERENCES users (id),
+	views_count INT (11)
 );
 
 CREATE INDEX fk_users_posts_idx ON posts (user_id);
