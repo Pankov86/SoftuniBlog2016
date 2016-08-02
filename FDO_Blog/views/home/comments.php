@@ -8,11 +8,12 @@
             <th>Posted on</th>
         </tr>
 
-        <?php foreach ($this->comments as $comment) : ?>
+        <?php  
+            foreach ($this->comments as $comment) : ?>
             <tr>
                 <td><?= htmlspecialchars($comment['id'])?></td>
-                <td><?= htmlspecialchars($comment['username'])?></a></td>
-                <td><?= htmlspecialchars($comment['content'])?></td>
+                <td><?= htmlspecialchars($comment['full_name'])?></a></td>
+                <td><?= htmlspecialchars($comment['comment_body'])?></td>
                 <td><?= htmlspecialchars($comment['date'])?></td>
             </tr>
         <?php endforeach; ?>
