@@ -6,8 +6,6 @@ class UsersModel extends BaseModel
     {
         
     }
-    
-  
 
     public function makeAdmin($id)
     {
@@ -32,21 +30,36 @@ class UsersModel extends BaseModel
     public function defineRole($id)
     {
         $statement = self::$db->query(
-            "SELECT user_group FROM user_group_interaction WHERE user_id = $id");
+            "SELECT group_name ".
+            "FROM groups WHERE id = ".
+            "(SELECT group_id ".
+            "FROM u_g_interaction ".
+            "WHERE user_id = $id)");
         return $statement->fetch_assoc();
     }
     
     public function getUserInfo($id)
     {
         $statement = self::$db->prepare(
-            "SELECT u.username, g.group_name, u.full_name, u.email, a.comments_count, a.points, a.points_given_by_user
-  FROM users u
-  join u_g_interaction ugi on ugi.user_id = u.id
-  join groups g on ugi.group_id = g.id
-  join activity a on a.user_id = u.id
+        "SELECT u.username, g.group_name, u.full_name, u.email, a.comments_count, a.points, a.points_given_by_user "
+        ."FROM users u "
+        ."JOIN u_g_interaction ugi on ugi.user_id = u.id "
+        ."JOIN groups g on ugi.group_id = g.id "
+        ."JOIN activity a on a.user_id = u.id "
+        ."WHERE u.id = ?");
 
-WHERE u.id = ?");
-        $statement->bind_param("i",$id);
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_assoc();
+        return $result;
+        
+        //$statement = self::$db->query("SELECT username, full_name, email FROM users WHERE id = $id");
+        //return $statement->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getActivity($id){
+        $statement = self::$db->prepare("SELECT points, comments_count, points_given_by_user FROM activity WHERE user_id = ?");
+        $statement->bind_param("i", $id);
         $statement->execute();
         $result = $statement->get_result()->fetch_assoc();
         return $result;
@@ -56,7 +69,7 @@ WHERE u.id = ?");
     {
         $statement = self::$db->query(
             "SELECT users.id, users.username, users.full_name, user_group_interaction.user_group ".
-            "FROM users JOIN user_group_interaction ".
+            "FROM users JOIN u_g_interaction ".
             "ON users.id = user_group_interaction.user_id ".
             "ORDER BY username");
         return $statement->fetch_all(MYSQLI_ASSOC);
@@ -68,7 +81,6 @@ WHERE u.id = ?");
         $query = self::$db->query("select * from users where username = '$username' or email = '$email'");
         return mysqli_num_rows($query);
     }
-    
     
     public function register(
         string $username, string $password, string $full_name, string $email)
@@ -85,6 +97,14 @@ WHERE u.id = ?");
         $user_id = self::$db->query(
             "SELECT LAST_INSERT_ID()")->fetch_row()[0];
         return $user_id;
+    }
+
+    public function createNewUserActivity(int $id){
+        $statement = self::$db->prepare("INSERT INTO activity (user_id) VALUES (?)");
+        $statement->bind_param('i', $id);
+        $statement->execute();
+        $result = $statement->affected_rows;
+        return $result;
     }
     
     public function getGroupIdByGroupName($group)
@@ -113,7 +133,7 @@ WHERE u.id = ?");
         $statement->bind_param("i", $id);
         $statement->execute();
         $result = $statement->get_result()->fetch_assoc();
-        return $result['group_name'];
+        return $result['group_name'];        
     }
     
     public function login(string $username, string $password)

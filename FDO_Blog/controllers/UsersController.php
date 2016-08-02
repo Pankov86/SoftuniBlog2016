@@ -78,11 +78,13 @@ class UsersController extends BaseController
                     //Find id of group 'user'
                     $group = 'user';
                     $group_id = $this->model->getGroupIdByGroupName($group);
-
                     //Insert user_id and group_id in u_g_interaction table
-                    $result = $this->model->fillUGInteraction($userId, $group_id);
+                    $resultUGI = $this->model->fillUGInteraction($userId, $group_id);
 
-                    if ($result){
+                    //Insert new user in table 'activity'
+                    $resultUA = $this->model->createNewUserActivity($userId);
+
+                    if ($resultUGI && $resultUA ){
                         $_SESSION['group_id'] = $group_id;
                         $_SESSION['username'] = $username;
                         $_SESSION['user_id'] = $userId;
@@ -127,21 +129,22 @@ class UsersController extends BaseController
         }
     }
 
-    public function profile()
-    {
-        $this->authorize();
-        
-        $id = $_SESSION['user_id'];
-        $this->user_info = $this->model->getUserInfo($id);
-//        $this->user_group = $this->model->getGroupById($id);
-//        $this->user_activity = $this->model->getActivity($id);
-    }
-    
     public function logout()
     {
 		session_destroy();
         $this->redirect('');
     }
+
+    public function profile()
+    {
+        $this->authorize();
+
+        $id = $_SESSION['user_id'];
+        $this->user_info = $this->model->getUserInfo($id); 
+//        $this->user_group = $this->model->getGroupById($id);
+//        $this->user_activity = $this->model->getActivity($id);
+    }
+
 
     public function index()
     {
@@ -152,7 +155,8 @@ class UsersController extends BaseController
         }
         else{
             $id = $_SESSION['user_id'];
-            $this->users = $this->model->getUserInfo($id);
+            $this->user = $this->model->getUserInfo($id);
+            $this->user['group_name'] = $_SESSION['user_group'];
         }
     }
 }
