@@ -6,6 +6,7 @@
             <th>Content</th>
             <th>Author</th>
             <th>Date</th>
+            <th>Reads</th>
         </tr>
 
         <?php foreach ($this->posts as $post) : ?>
@@ -15,6 +16,7 @@
                 <td><?= cutLongText($post['content'])?></td>
                 <td><?= htmlspecialchars($post['full_name'])?></td>
                 <td><?= htmlspecialchars($post['date'])?></td>
+                <td><?= htmlspecialchars($post['views_count'])?></td>
             </tr>
         <?php endforeach; ?>
     </table>

@@ -24,7 +24,7 @@ class PostsModel extends HomeModel
     function getAll()
     {
         $statement = self::$db->query(
-            "SELECT posts.id, title, content, date, full_name, user_id " .
+            "SELECT posts.id, title, content, date, full_name, user_id, views_count " .
             "FROM posts " .
             "LEFT JOIN users " .
             "On posts.user_id = users.id " .

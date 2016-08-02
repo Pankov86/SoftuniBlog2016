@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2016 at 11:39 AM
+-- Generation Time: Aug 02, 2016 at 06:59 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `activity` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `comments_count` int(11) DEFAULT NULL,
-  `points` int(11) DEFAULT NULL,
-  `points_given_by_user` int(11) DEFAULT NULL,
+  `comments_count` int(11) DEFAULT '0',
+  `points` int(11) DEFAULT '0',
+  `points_given_by_user` int(11) DEFAULT '0',
   `Activitycol` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -40,8 +40,10 @@ CREATE TABLE `activity` (
 --
 
 INSERT INTO `activity` (`id`, `user_id`, `comments_count`, `points`, `points_given_by_user`, `Activitycol`) VALUES
-(1, 3, 4, 5, 1, NULL),
-(2, 2, 3, 1, 1, NULL);
+(1, 3, 4, 5, 1, '0'),
+(2, 2, 3, 1, 1, '0'),
+(3, 9, 0, 0, 0, '0'),
+(4, 10, 0, 0, 0, NULL);
 
 --
 -- Indexes for dumped tables
@@ -61,7 +63,7 @@ ALTER TABLE `activity`
 -- AUTO_INCREMENT for table `activity`
 --
 ALTER TABLE `activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

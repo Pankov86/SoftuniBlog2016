@@ -35,6 +35,12 @@ class HomeModel extends BaseModel
     function getPostById(int $id)
     {
         $statement = self::$db->prepare(
+            "UPDATE posts SET views_count = views_count + 1 ".
+            "WHERE id = ?");
+        $statement->bind_param("i", $id);
+        $statement->execute();
+
+        $statement = self::$db->prepare(
             "SELECT posts.id, title, content, date, full_name ".
             "FROM posts LEFT JOIN users On posts.user_id = users.id ".
             "WHERE posts.id = ?");
