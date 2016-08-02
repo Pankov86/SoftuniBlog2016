@@ -2,6 +2,14 @@
 
 class HomeModel extends BaseModel
 {
+    public function getAllPosts(){
+        $statement = self::$db->query(
+            "SELECT p.id, p.title, p.content, p.date, u.full_name "
+            ."FROM posts p LEFT JOIN users u "
+            ."ON p.user_id = u.id ");
+        return $statement->fetch_all(MYSQLI_ASSOC);
+    }
+    
     function createComment($id, $username, $content)
     {
         $statement = self::$db->prepare(
@@ -39,9 +47,16 @@ class HomeModel extends BaseModel
     function getPostComments($id)
     {
         $statement = self::$db->query(
-            "SELECT comments.id, comments.content, comments.date, comments.username " .
-            "FROM comments LEFT JOIN posts ON comments.post_id = posts.id ".
-            "WHERE comments.post_id = $id");
+            "SELECT c.comment_body, c.id, c.date, u.full_name "
+            ."FROM comments c "
+            ."LEFT JOIN users u ON c.author_id = u.id "
+            ."WHERE c.post_id = $id");
+//        $statement->bind_param("i", $id);
+//        $statement->execute();
+//
+//        $result = $statement->get_result()->fetch_assoc();
+//        return $result;
+
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
 }
