@@ -7,6 +7,7 @@
             <th>Author</th>
             <th>Date</th>
             <th>Reads</th>
+            <th>Comments</th>
         </tr>
 
         <?php foreach ($this->posts as $post) : ?>
@@ -17,6 +18,7 @@
                 <td><?= htmlspecialchars($post['full_name'])?></td>
                 <td><?= htmlspecialchars($post['date'])?></td>
                 <td><?= htmlspecialchars($post['views_count'])?></td>
+                <td><?= htmlspecialchars($post['comments_count'])?></td>
             </tr>
         <?php endforeach; ?>
     </table>

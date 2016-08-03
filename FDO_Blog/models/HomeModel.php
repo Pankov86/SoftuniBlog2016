@@ -10,16 +10,17 @@ class HomeModel extends BaseModel
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
     
-    function createComment($id, $username, $content)
+    function createComment($id, $user_id, $content)
     {
         $statement = self::$db->prepare(
-            "INSERT INTO comments (post_id, username, content)".
+            "INSERT INTO comments (post_id, author_id, comment_body )".
             "VALUES (?, ?, ?)");
-        $statement->bind_param("iss", $id, $username, $content);
+        $statement->bind_param("iss", $id, $user_id, $content);
         $statement->execute();
         return $statement->affected_rows == 1;
+
     }
-    
+
     function getLatestPosts(int $maxCount)
     {
         $statement = self::$db->query(
@@ -53,7 +54,7 @@ class HomeModel extends BaseModel
     function getPostComments($id)
     {
         $statement = self::$db->query(
-            "SELECT c.comment_body, c.id, c.date, u.full_name "
+            "SELECT c.comment_body, c.id, c.date, u.full_name, c.post_id, c.author_id "
             ."FROM comments c "
             ."LEFT JOIN users u ON c.author_id = u.id "
             ."WHERE c.post_id = $id");
