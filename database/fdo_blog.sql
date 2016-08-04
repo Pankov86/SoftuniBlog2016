@@ -3,20 +3,21 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2016 at 10:19 AM
+-- Generation Time: Aug 04, 2016 at 11:01 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
+
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+DROP DATABASE IF EXISTS `fdo_blog`;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
-DROP DATABASE IF EXISTS `fdo_blog`;
 
 --
 -- Database: `fdo_blog`
@@ -31,15 +32,14 @@ USE `fdo_blog`;
 --
 
 DROP TABLE IF EXISTS `activity`;
-CREATE TABLE IF NOT EXISTS `activity` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `activity` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `comments_count` int(11) DEFAULT NULL,
   `points` int(11) DEFAULT NULL,
   `points_given_by_user` int(11) DEFAULT NULL,
-  `Activitycol` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `Activitycol` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `activity`
@@ -57,19 +57,22 @@ INSERT INTO `activity` (`id`, `user_id`, `comments_count`, `points`, `points_giv
 --
 
 DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `category_name` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `category_name_UNIQUE` (`category_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `category_name` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `category_name`) VALUES
-(1, 'building_websites');
+(4, 'Affiliate_Advertising'),
+(1, 'Building_Websites'),
+(5, 'Copywriting'),
+(2, 'Ecommerce'),
+(6, 'Freelance_ Development'),
+(3, 'Social_Media_Marketing');
 
 -- --------------------------------------------------------
 
@@ -78,11 +81,9 @@ INSERT INTO `category` (`id`, `category_name`) VALUES
 --
 
 DROP TABLE IF EXISTS `category_post_interaction`;
-CREATE TABLE IF NOT EXISTS `category_post_interaction` (
+CREATE TABLE `category_post_interaction` (
   `category_id` int(11) NOT NULL,
-  `post_id` int(11) NOT NULL,
-  UNIQUE KEY `category_id_UNIQUE` (`category_id`),
-  UNIQUE KEY `post_id_UNIQUE` (`post_id`)
+  `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -92,14 +93,13 @@ CREATE TABLE IF NOT EXISTS `category_post_interaction` (
 --
 
 DROP TABLE IF EXISTS `comments`;
-CREATE TABLE IF NOT EXISTS `comments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
   `comment_body` text NOT NULL,
   `author_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `comments`
@@ -120,11 +120,10 @@ INSERT INTO `comments` (`id`, `comment_body`, `author_id`, `post_id`, `date`) VA
 --
 
 DROP TABLE IF EXISTS `groups`;
-CREATE TABLE IF NOT EXISTS `groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `group_name` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+CREATE TABLE `groups` (
+  `id` int(11) NOT NULL,
+  `group_name` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `groups`
@@ -141,16 +140,14 @@ INSERT INTO `groups` (`id`, `group_name`) VALUES
 --
 
 DROP TABLE IF EXISTS `posts`;
-CREATE TABLE IF NOT EXISTS `posts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
   `title` varchar(300) NOT NULL,
   `content` text NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) DEFAULT NULL,
-  `views_count` int(11) DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `fk_users_posts_idx` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `views_count` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `posts`
@@ -171,11 +168,9 @@ INSERT INTO `posts` (`id`, `title`, `content`, `date`, `user_id`, `views_count`)
 --
 
 DROP TABLE IF EXISTS `post_tag_interaction`;
-CREATE TABLE IF NOT EXISTS `post_tag_interaction` (
+CREATE TABLE `post_tag_interaction` (
   `post_id` int(11) NOT NULL,
-  `tag_id` int(11) NOT NULL,
-  UNIQUE KEY `post_id_UNIQUE` (`post_id`),
-  UNIQUE KEY `tag_id_UNIQUE` (`tag_id`)
+  `tag_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -192,20 +187,21 @@ INSERT INTO `post_tag_interaction` (`post_id`, `tag_id`) VALUES
 --
 
 DROP TABLE IF EXISTS `tags`;
-CREATE TABLE IF NOT EXISTS `tags` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tag_name` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `tag_name_UNIQUE` (`tag_name`),
-  UNIQUE KEY `tag_name` (`tag_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+CREATE TABLE `tags` (
+  `id` int(11) NOT NULL,
+  `tag_name` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tags`
 --
 
 INSERT INTO `tags` (`id`, `tag_name`) VALUES
-(1, 'create_website');
+(5, '#blog'),
+(6, '#creativeWriting'),
+(3, '#development'),
+(4, '#digitalMarketing'),
+(1, '#ecommerce');
 
 -- --------------------------------------------------------
 
@@ -214,15 +210,13 @@ INSERT INTO `tags` (`id`, `tag_name`) VALUES
 --
 
 DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password_hash` varchar(100) DEFAULT NULL,
   `full_name` varchar(200) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  `email` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
@@ -237,7 +231,8 @@ INSERT INTO `users` (`id`, `username`, `password_hash`, `full_name`, `email`) VA
 (6, 'test', '$2y$10$I5y7X1ZilitEZYOztOI5SuA2rBeRJUj/ZhlgmSZK32LPqaqh3Gy3q', '', 'test@email.com'),
 (7, 'it''s security "test"<br>', '$2y$10$thSx6ceSyCPxdl.BDGLhKe7lQu8d3oopQ/LJYK8ma.Dz6jWbOgj8C', 'it''s security "test"<br>', 'test1@email.com'),
 (8, 'vikash', '$2y$10$Exc5mMcThOlEnXZ2.kAPl.ouBSDl8S0GjD.3vvB6KohMpcgfsLsde', 'Vikash Jain', 'Jain@email.com'),
-(9, 'ralka', '$2y$10$SDjcFUZ9R4LCF4HvGMiaIueLXzRjfocCy3bfUlLEAK/VrJIL1MNcK', 'ralka', 'ralka@gmail.com');
+(9, 'ralka', '$2y$10$SDjcFUZ9R4LCF4HvGMiaIueLXzRjfocCy3bfUlLEAK/VrJIL1MNcK', 'ralka', 'ralka@gmail.com'),
+(10, 'oggy', '$2y$10$W85qLYDjZuEqLYX/Qx88a.56fvWH6gBNwn4xy27BQya71rETm./Se', 'Ognyan Stanoev', 'oggy@oggy.com');
 
 -- --------------------------------------------------------
 
@@ -246,14 +241,11 @@ INSERT INTO `users` (`id`, `username`, `password_hash`, `full_name`, `email`) VA
 --
 
 DROP TABLE IF EXISTS `u_g_interaction`;
-CREATE TABLE IF NOT EXISTS `u_g_interaction` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `u_g_interaction` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_users_groups` (`user_id`),
-  KEY `fk_groups_users` (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `group_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `u_g_interaction`
@@ -267,8 +259,126 @@ INSERT INTO `u_g_interaction` (`id`, `user_id`, `group_id`) VALUES
 (5, 5, 2),
 (6, 6, 2),
 (7, 7, 2),
-(8, 9, 2);
+(8, 9, 2),
+(9, 10, 2);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `activity`
+--
+ALTER TABLE `activity`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `category_name_UNIQUE` (`category_name`);
+
+--
+-- Indexes for table `category_post_interaction`
+--
+ALTER TABLE `category_post_interaction`
+  ADD UNIQUE KEY `category_id_UNIQUE` (`category_id`),
+  ADD UNIQUE KEY `post_id_UNIQUE` (`post_id`);
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_users_posts_idx` (`user_id`);
+
+--
+-- Indexes for table `post_tag_interaction`
+--
+ALTER TABLE `post_tag_interaction`
+  ADD UNIQUE KEY `post_id_UNIQUE` (`post_id`),
+  ADD UNIQUE KEY `tag_id_UNIQUE` (`tag_id`);
+
+--
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tag_name_UNIQUE` (`tag_name`),
+  ADD UNIQUE KEY `tag_name` (`tag_name`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username_UNIQUE` (`username`);
+
+--
+-- Indexes for table `u_g_interaction`
+--
+ALTER TABLE `u_g_interaction`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_users_groups` (`user_id`),
+  ADD KEY `fk_groups_users` (`group_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `activity`
+--
+ALTER TABLE `activity`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `u_g_interaction`
+--
+ALTER TABLE `u_g_interaction`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- Constraints for dumped tables
 --
