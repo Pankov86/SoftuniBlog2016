@@ -5,7 +5,14 @@ class HomeController extends BaseController
     function index()
     {
         $this->posts = $this->model->getAllPosts();
-        $this->postsSidebar = $this->model->getLatestPosts(5);
+        $this->categories = $this->model->getCategories();
+    }
+
+    function category(int $id)
+    {
+        $this->category = $this->model->getCategoryById($id);
+        $this->categories = $this->model->getCategories();
+        $this->posts = $this->model->getPostsByCategory($id);
     }
 	
 	function view(int $id)

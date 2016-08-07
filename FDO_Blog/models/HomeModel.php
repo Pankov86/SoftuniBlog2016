@@ -21,15 +21,37 @@ class HomeModel extends BaseModel
 
     }
 
-    function getLatestPosts(int $maxCount)
+    function getCategoryById(int $id){
+        $statement = self::$db->prepare(
+            "SELECT category_name ".
+            "FROM category ".
+            "WHERE id = ?");
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_assoc();
+
+        return $result;
+    }
+
+    function getPostsByCategory(int $id)
     {
         $statement = self::$db->query(
-            "SELECT posts.id, title, content, date, full_name ".
-            "FROM posts ".
-            "LEFT JOIN users ".
-            "On posts.user_id = users.id ".
-            "ORDER BY date DESC ".
-            "LIMIT ". $maxCount);
+            "SELECT *".
+            "FROM posts LEFT JOIN category_post_interaction ".
+            "ON posts.id = category_post_interaction.post_id ".
+            "JOIN users ".
+            "ON posts.user_id = users.id ".
+            "WHERE category_id = $id ".
+            "ORDER BY posts.id");
+
+        return $statement->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function getCategories()
+    {
+        $statement = self::$db->query(
+            "SELECT * ".
+            "FROM category c");
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -48,6 +70,9 @@ class HomeModel extends BaseModel
         $statement->bind_param("i", $id);
         $statement->execute();
         $result = $statement->get_result()->fetch_assoc();
+
+        
+
         return $result;
     }
     
