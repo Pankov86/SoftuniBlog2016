@@ -15,6 +15,12 @@
                 <td><?= htmlspecialchars($comment['full_name'])?></a></td>
                 <td><?= htmlspecialchars($comment['comment_body'])?></td>
                 <td><?= htmlspecialchars($comment['date'])?></td>
+
+                <?php if ($_SESSION['user_id'] == $comment['author_id']) : ?>
+                    <td>
+                        <a href="<?=APP_ROOT?>/home/deleteComment/<?=$comment['id']?>">[Delete]</a>
+                    </td>
+                <?php endif; ?>
             </tr>
         <?php endforeach; ?>
     </table>

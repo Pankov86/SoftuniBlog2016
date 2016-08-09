@@ -47,4 +47,18 @@ class HomeController extends BaseController
             }
         }
     }
+
+    function deleteComment($comment_id)
+    {
+        if ($this->isPost){
+            if ($this->model->deleteComment($comment_id)){
+                $this->addInfoMessage("Comment deleted.");
+            }
+            else{
+                $this->addErrorMessage("Error: cannot delete comment.");
+            }
+            $this->isViewRendered = False;
+            $this->redirect("posts");
+        }
+    }
 }

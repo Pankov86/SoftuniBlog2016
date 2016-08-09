@@ -21,6 +21,18 @@ class HomeModel extends BaseModel
 
     }
 
+
+    public function deleteComment($id) :bool
+    {
+        //delete comment
+        $statement = self::$db->prepare(
+            "DELETE FROM comments WHERE id = ?"
+        );
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        return $statement->affected_rows == 1;
+    }
+
     function getCategoryById(int $id){
         $statement = self::$db->prepare(
             "SELECT category_name ".
