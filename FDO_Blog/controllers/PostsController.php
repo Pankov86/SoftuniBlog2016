@@ -41,10 +41,17 @@ class PostsController extends BaseController
             if (strlen($content) < 1){
                 $this->setValidationError("post_content", "Post content is empty.");
             }
+            $tag_name = $_POST['tag_name'];
+            if (strlen($tag_name) < 3) {
+                $this->setValidationError("tag_name", "Tag name too short ");
+            }
+            
+            $tag_id = $this->model->findTagByName($tag_name);
+            
             
             if ($this->formValid()){
                 $userId = $_SESSION['user_id'];
-                if ($this->model->create($title, $content, $userId, $category_id)){
+                if ($this->model->create($title, $content, $userId, $category_id, $tag_id)){
                     $this->addInfoMessage("Post created.");
                     $this->redirect("posts");
                 }

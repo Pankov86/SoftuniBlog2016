@@ -3,6 +3,24 @@
 class PostsModel extends HomeModel
 {
 
+    function getTags()
+    {
+        $statement = self::$db->query(
+            "SELECT * ".
+            "FROM tags ");
+        return $statement->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    function findTagByName(string $tag_name)
+    {
+        $tag_id = self::$db->query(
+            "SELECT id ".
+            "FROM tags ".
+            "WHERE tag_name = $tag_name"
+        );
+        return $tag_id;
+    }
+    
     function getCategories()
     {
         $statement = self::$db->query(
