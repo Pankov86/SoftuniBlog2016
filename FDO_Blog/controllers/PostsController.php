@@ -27,9 +27,12 @@ class PostsController extends BaseController
         $this->posts = $this->model->getAll();
     }
 
-    function create() 
+    function create()
     {
         if ($this->isPost){
+            //$category = $_POST['category'];
+            $category_id = $_POST['category'];
+
             $title = $_POST['post_title'];
             if (strlen($title) < 1){
                 $this->setValidationError("post_title", "Title too short.");
@@ -41,7 +44,7 @@ class PostsController extends BaseController
             
             if ($this->formValid()){
                 $userId = $_SESSION['user_id'];
-                if ($this->model->create($title, $content, $userId)){
+                if ($this->model->create($title, $content, $userId, $category_id)){
                     $this->addInfoMessage("Post created.");
                     $this->redirect("posts");
                 }
