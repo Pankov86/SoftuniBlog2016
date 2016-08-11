@@ -3,24 +3,24 @@
 class PostsModel extends HomeModel
 {
 
-    function getTags()
-    {
-        $statement = self::$db->query(
-            "SELECT * ".
-            "FROM tags ");
-        return $statement->fetch_all(MYSQLI_ASSOC);
-    }
+//    function getTags()
+//    {
+//        $statement = self::$db->query(
+//            "SELECT * ".
+//            "FROM tags ");
+//        return $statement->fetch_all(MYSQLI_ASSOC);
+//    }
     
-    function findTagByName(string $tag_name)
-    {
-        $tag_id = self::$db->query(
-            "SELECT id ".
-            "FROM tags ".
-            "WHERE tag_name = $tag_name"
-        );
-        return $tag_id;
-    }
-    
+//    function findTagByName(string $tag_name)
+//    {
+//        $tag_id = self::$db->query(
+//            "SELECT id ".
+//            "FROM tags ".
+//            "WHERE tag_name = $tag_name"
+//        );
+//        return $tag_id;
+//    }
+
     function getCategories()
     {
         $statement = self::$db->query(
@@ -79,11 +79,7 @@ class PostsModel extends HomeModel
         $statementPost->execute();
 
         $post_id = $statementPost->insert_id;
-//        $category_id = self::$db->query(
-//            "SELECT category_id ".
-//            "FROM category ".
-//            "WHERE category_name = $category");
-//
+
         $statementCategory = self::$db->prepare(
             "INSERT INTO category_post_interaction (category_id, post_id) ".
             "VALUES (?, ?)");
