@@ -15,7 +15,6 @@
     <textarea name="content" cols="50" rows="5" placeholder="Write your comment" required
     ></textarea>
         <div><input type="submit" value="Add comment" >
-            <a href="<?=APP_ROOT?>/home/view/<?=$this->post['id']?>">[Cancel]</a></div>
     </form>
 
     <?php include 'comments.php' ?>

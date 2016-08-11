@@ -39,5 +39,5 @@
     </div>
 
     <div><input type="submit" value="Create post">
-        <a href="<?=APP_ROOT?>/posts">[Cancel]</a></div>
+        <a href="<?=APP_ROOT?>/viewAllPosts">[Cancel]</a></div>
 </form>

@@ -6,7 +6,8 @@ class HomeModel extends BaseModel
         $statement = self::$db->query(
             "SELECT p.id, p.title, p.content, p.date, u.full_name "
             ."FROM posts p LEFT JOIN users u "
-            ."ON p.user_id = u.id ");
+            ."ON p.user_id = u.id "
+            ."ORDER by date");
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
     
@@ -67,6 +68,7 @@ class HomeModel extends BaseModel
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
 
+    
     function getPostById(int $id)
     {
         $statement = self::$db->prepare(
@@ -103,4 +105,5 @@ class HomeModel extends BaseModel
 
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
+
 }
