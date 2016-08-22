@@ -9,44 +9,49 @@ class UsersController extends BaseController
         $this->user_info = $this->model->getInfoForEdit($id);
     }
 
+    function validateEmail(string $email, string $field){
+        if (strpos($email, '@')){
+            $list = array_map('trim', explode("@", $email));
+            $domain = $list[1];
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL) || !checkdnsrr($domain, 'MX')){
+                $this->setValidationError($field, "E-mail not valid.");
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+        $this->setValidationError($field, "E-mail not valid.");
+        return false;
+    }
+
     public function editUserInfo()
     {
         $id = $_SESSION['user_id'];
+        $oldInfo = $this->model->getInfoForEdit($id);
+        $newFullname = $oldInfo['full_name'];
+        $newEmail = $oldInfo['email'];
 
-        if ($this->isPost){
-            $newFullname = $_POST['newFullname'];
-            $newEmail = $_POST['newEmail'];
+        if (!empty($_POST['newFullname'])|| !empty($_POST['newEmail'])){
 
-            $oldInfo = $this->model->getInfoForEdit;
-
-            if ($newFullname != $oldInfo['full_name'] || $newEmail != $oldInfo['email']){
-
-                $list = array_map('trim', explode("@", $newEmail));
-                $domain = $list[1];
-
-                if (!filter_var($newEmail, FILTER_VALIDATE_EMAIL) || !checkdnsrr($domain, 'MX')){
-                    $this->setValidationError("email", "New e-mail not valid.");
-                }
-
-                $result = $this->model->checkUniqueEmail($newEmail);
-
-                if (!$result){
-                    $result = $this->model->editUserInfo($id, $newFullname, $newEmail);
-
-                    if ($result){
-                        $this->redirect('users', 'profile');
-                        $this->addInfoMessage("Changes saved.");
-                    }
-                    else{
-                        $this->addErrorMessage("Error: Edit failed.");
-                    }
-                }
-                else{
-                    $this->addErrorMessage("This email is already in use.");
-                }
+            if (isset($_POST['newFullname'])){
+                $newFullname = $_POST['newFullname'];
             }
-            else{
-                $this->addErrorMessage("You haven't change info.");
+            if (isset($_POST['newEmail'])){
+                $newEmail = $_POST['newEmail'];
+
+                if ($this->validateEmail($newEmail, 'newEmail')){
+                    if ($this->formValid()){
+                        $result = $this->model->editUserInfo($id, $newFullname, $newEmail);
+                        if ($result){
+                            $this->redirect('users', 'profile');
+                            $this->addInfoMessage("Changes saved.");
+                        }
+                        else{
+                            $this->addErrorMessage("Error: Edit failed.");
+                        }
+                    }
+                }
             }
         }
     }
@@ -140,45 +145,43 @@ class UsersController extends BaseController
                 $this->setValidationError("confirm_password", "Passwords do not match.");
                 return;
             }
-            $list = array_map('trim', explode("@", $email));
-            $domain = $list[1];
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL) || !checkdnsrr($domain, 'MX')){
-                $this->setValidationError("email", "E-mail not valid.");
-            }
 
-            $result = $this->model->checkUniqueUserAndMail($username, $email);
-            if ($result == 0){
-                $userId = $this->model->register(
-                    $username, $password, $full_name, $email);
-                if ($userId){
-                    //Find id of group 'user'
-                    $group = 'user';
-                    $group_id = $this->model->getGroupIdByGroupName($group);
-                    //Insert user_id and group_id in u_g_interaction table
-                    $resultUGI = $this->model->fillUGInteraction($userId, $group_id);
-                    
+            if ($this->validateEmail($email, 'email')){
+                $result = $this->model->checkUniqueUserAndMail($username, $email);
+                if ($result == 0){
+                    $userId = $this->model->register(
+                        $username, $password, $full_name, $email);
+                    if ($userId){
+                        //Find id of group 'user'
+                        $group = 'user';
+                        $group_id = $this->model->getGroupIdByGroupName($group);
+                        //Insert user_id and group_id in u_g_interaction table
+                        $resultUGI = $this->model->fillUGInteraction($userId, $group_id);
 
-                    //Insert new user in table 'activity'
-                    $resultUA = $this->model->createNewUserActivity($userId);
 
-                    if ($resultUGI && $resultUA ){
-                        $_SESSION['group_id'] = $group_id;
-                        $_SESSION['username'] = $username;
-                        $_SESSION['user_id'] = $userId;
-                        $this->addInfoMessage("Registration successful.");
-                        $this->redirect('');
+                        //Insert new user in table 'activity'
+                        $resultUA = $this->model->createNewUserActivity($userId);
+
+                        if ($resultUGI && $resultUA ){
+                            $_SESSION['group_id'] = $group_id;
+                            $_SESSION['username'] = $username;
+                            $_SESSION['user_id'] = $userId;
+                            $this->addInfoMessage("Registration successful.");
+                            $this->redirect('');
+                        }
+                        else{
+                            $this->addErrorMessage("Error: Registration failed.");
+                        }
                     }
                     else{
                         $this->addErrorMessage("Error: Registration failed.");
                     }
                 }
                 else{
-                    $this->addErrorMessage("Error: Registration failed.");
+                    $this->addErrorMessage("Error: Username or email already exists.");
                 }
             }
-            else{
-                $this->addErrorMessage("Error: Username or email already exists.");
-            }
+
         }
     }
 

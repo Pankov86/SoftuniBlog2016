@@ -4,12 +4,14 @@
 
 <?php $old_user_info = $this->user_info ?>
 
-<form method="post">
+<form method="post" >
     <div>Full name:</div>
-    <div><input type="text" name="newFullname" value="<?=$old_user_info['full_name'] ?>"></div>
+    <div><input type="text" name="newFullname" /></div>
+
 
     <div>New Email:</div>
-    <div><input type="text" name="newEmail" value="<?=$old_user_info['email'] ?>"></div>
+    <div><input type="text" name="newEmail"/></div>
 
-    <input type="submit" value="Save changes" onsubmit="<?php $this->editUserInfo() ?>">
+
+    <input type="submit" value="Save changes" onsubmit="<?=$this->editUserInfo() ?>" />
 </form>

@@ -70,7 +70,7 @@ function processRequest(array $requestParsed)
 }
 
 /**
- * Auto load the controller and model classes from their .php files.
+ * AAuto load the controller and model classes from their .php files.
  * @param string $class_name <p>the name of the class to load</p>
  */
 function __autoload(string $class_name)
