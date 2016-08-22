@@ -18,7 +18,7 @@
 
                 <?php if ($_SESSION['user_id'] == $comment['author_id']) : ?>
                     <td>
-                        <a href="#">[Delete]</a>
+                        <a href="<?=APP_ROOT?>/home/deleteComment/<?=$comment['id']?>">[Delete]</a>
                     </td>
                 <?php endif; ?>
             </tr>
