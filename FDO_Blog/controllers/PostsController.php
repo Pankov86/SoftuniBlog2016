@@ -2,6 +2,7 @@
 
 class PostsController extends BaseController
 {
+    
     function onInit()
     {
         $this->authorize();

@@ -12,12 +12,16 @@
 <body>
 <header>
     <a href="<?=APP_ROOT?>"><img src="<?=APP_ROOT?>/content/images/site-logo.png"></a>
+    
     <a href="<?=APP_ROOT?>/">Home</a>
+    <a href="<?=APP_ROOT?>/home/about">About us</a>
+
 
     <?php if ($this->isLoggedInAsAdmin) : ?>
         <a href="<?=APP_ROOT?>/posts">Posts</a>
         <a href="<?=APP_ROOT?>/posts/create">Create Post</a>
         <a href="<?=APP_ROOT?>/users">Users</a>
+
 
     <?php elseif ($this->isLoggedIn) : ?>
         <a href="<?=APP_ROOT?>/posts/viewAllPosts">All Posts</a>
@@ -25,9 +29,11 @@
         <a href="<?=APP_ROOT?>/posts/create">Create Post</a>
 
 
+
     <?php else: ?>
         <a href="<?=APP_ROOT?>/users/login">Login</a>
         <a href="<?=APP_ROOT?>/users/register">Register</a>
+
 
     <?php endif; ?>
 

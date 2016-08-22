@@ -80,6 +80,7 @@ class UsersController extends BaseController
                     $group_id = $this->model->getGroupIdByGroupName($group);
                     //Insert user_id and group_id in u_g_interaction table
                     $resultUGI = $this->model->fillUGInteraction($userId, $group_id);
+                    
 
                     //Insert new user in table 'activity'
                     $resultUA = $this->model->createNewUserActivity($userId);

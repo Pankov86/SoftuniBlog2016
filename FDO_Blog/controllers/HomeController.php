@@ -2,6 +2,12 @@
 
 class HomeController extends BaseController
 {
+    function about()
+    {
+        
+    }
+
+
     function index()
     {
         $this->posts = $this->model->getAllPosts();
