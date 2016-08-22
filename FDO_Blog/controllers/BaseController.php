@@ -12,6 +12,7 @@ abstract class BaseController
     protected $model;
     protected $validationErrors = [];
 
+
     function __construct(string $controllerName, string $actionName)
     {
         $this->controllerName = $controllerName;
@@ -57,10 +58,14 @@ abstract class BaseController
             if ($includeLayout) {
                 include('views/_layout/header.php');
             }
+            if ($includeLayout) {
+                include ('views/_layout/aside.php');
+            }
             echo $htmlFromView;
             if ($includeLayout) {
                 include('views/_layout/footer.php');
             }
+
             $this->isViewRendered = true;
         }
     }

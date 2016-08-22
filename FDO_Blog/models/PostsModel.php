@@ -3,6 +3,7 @@
 class PostsModel extends HomeModel
 {
 
+
 //    function getTags()
 //    {
 //        $statement = self::$db->query(
@@ -51,7 +52,7 @@ class PostsModel extends HomeModel
     function getAll()
     {
         $statement = self::$db->query(
-            "SELECT posts.id, title, content, date, full_name, user_id, views_count, " .
+            "SELECT posts.id, title, content, date, full_name, user_id, views_count, points, " .
             "   (SELECT count(*) FROM comments c WHERE c.post_id = posts.id) comments_count " .
             "FROM posts " .
             "LEFT JOIN users " .

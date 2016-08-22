@@ -2,6 +2,24 @@
 
 class HomeModel extends BaseModel
 {
+
+    function vote(int $post_id, int $user_id){
+        $statement = self::$db->prepare
+        ("UPDATE posts ".
+            "SET points = points + 1 ".
+            "WHERE id = ?");
+        $statement->bind_param("i", $post_id);
+        $statement->execute();
+
+        $statement = self::$db->prepare(
+            "INSERT INTO post_user_status (post_id, user_id) VALUES (?, ?)"
+        );
+        $statement->bind_param("ii", $post_id, $user_id);
+        $statement->execute();
+
+        return $statement->affected_rows == 1;
+    }
+
     public function getAllPosts(){
         $statement = self::$db->query(
             "SELECT p.id, p.title, p.content, p.date, u.full_name "
@@ -22,6 +40,12 @@ class HomeModel extends BaseModel
 
     }
 
+    function getCommentById(int $comment_id)
+    {
+        $statement = self::$db->query(
+            "SELECT * FROM comments WHERE id = $comment_id");
+        return $statement->fetch_all(MYSQLI_ASSOC);
+    }
 
     public function deleteComment($id) :bool
     {
@@ -78,15 +102,12 @@ class HomeModel extends BaseModel
         $statement->execute();
 
         $statement = self::$db->prepare(
-            "SELECT posts.id, title, content, date, full_name ".
+            "SELECT posts.id, title, content, date, full_name, points ".
             "FROM posts LEFT JOIN users On posts.user_id = users.id ".
             "WHERE posts.id = ?");
         $statement->bind_param("i", $id);
         $statement->execute();
         $result = $statement->get_result()->fetch_assoc();
-
-        
-
         return $result;
     }
     

@@ -10,12 +10,24 @@
     </p>
     <p><?= $this->post['content']; ?></p>
 
-    <form id="comment-form" method="post" onsubmit="<?=$this->addComment($this->post['id'])?>">
-        <div><h3>Add new comment</h3></div>
-    <textarea name="content" cols="50" rows="5" placeholder="Write your comment" required
-    ></textarea>
-        <div><input type="submit" value="Add comment" >
-    </form>
+    <form id="vote-form" method="post" action="<?php
 
-    <?php include 'comments.php' ?>
+    if (isset($_POST['vote-button']))
+    {
+        if ($this->isPost) {
+            $user_id = $_SESSION['user_id'];
+            if ($this->model->vote($this->post['id'], $user_id)) {
+                header("Location: " . APP_ROOT . '/home/view/' . $this->post['id']);
+            }
+        }
+    }
+    ?>">
+        <input type="submit" value="Vote" name="vote-button"/>
+    </form>
+    <p><?= $this->post['points']; ?></p>
+
+    <?php $_SESSION['post_id'] = $this->post['id'] ?>
+    <?php include 'addComment.php' ?>
+    <?php include 'Comments.php' ?>
 </main>
+

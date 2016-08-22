@@ -4,6 +4,6 @@
     ></textarea>
     <div><input type="submit" value="Add comment" onsubmit="<?=
         $id = $this->post['id'];
-        $this->controller->addComment($id)?>">
+        $this->addComment($id)?>">
         <a href="<?=APP_ROOT?>/home/view/<?=$this->post['id']?>">[Cancel]</a></div>
 </form>

@@ -2,6 +2,82 @@
 
 class UsersController extends BaseController
 {
+    public function edit()
+    {
+        $this->authorize();
+        $id = $_SESSION['user_id'];
+        $this->user_info = $this->model->getInfoForEdit($id);
+    }
+
+    public function editUserInfo()
+    {
+        $id = $_SESSION['user_id'];
+
+        if ($this->isPost){
+            $newFullname = $_POST['newFullname'];
+            $newEmail = $_POST['newEmail'];
+
+            $oldInfo = $this->model->getInfoForEdit;
+
+            if ($newFullname != $oldInfo['full_name'] || $newEmail != $oldInfo['email']){
+
+                $list = array_map('trim', explode("@", $newEmail));
+                $domain = $list[1];
+
+                if (!filter_var($newEmail, FILTER_VALIDATE_EMAIL) || !checkdnsrr($domain, 'MX')){
+                    $this->setValidationError("email", "New e-mail not valid.");
+                }
+
+                $result = $this->model->checkUniqueEmail($newEmail);
+
+                if (!$result){
+                    $result = $this->model->editUserInfo($id, $newFullname, $newEmail);
+
+                    if ($result){
+                        $this->redirect('users', 'profile');
+                        $this->addInfoMessage("Changes saved.");
+                    }
+                    else{
+                        $this->addErrorMessage("Error: Edit failed.");
+                    }
+                }
+                else{
+                    $this->addErrorMessage("This email is already in use.");
+                }
+            }
+            else{
+                $this->addErrorMessage("You haven't change info.");
+            }
+        }
+    }
+
+    public function changePassword()
+    {
+        $id = $_SESSION['user_id'];
+
+        if (isset($_POST['newPassword']) && isset($_POST['confirmPassword']) && isset($_POST['oldPassword'])){
+            $old_password = $_POST['oldPassword'];
+            $new_password = $_POST['newPassword'];
+            $confirm_password = $_POST['confirmPassword'];
+
+            //confirm old password
+            $isOldPasswordValid = $this->model->isOldPasswordValid($id, $old_password);
+            if (!$isOldPasswordValid){
+                $this->setValidationError("password", "Wrong password.");
+            }
+
+            //confirm new password
+            if (strlen($new_password) <= 1){
+                $this->setValidationError("password", "Password too short.");
+                return;
+            }
+            if ($new_password != $confirm_password){
+                $this->setValidationError("confirm_password", "Passwords do not match.");
+                return;
+            }
+        }
+    }
+
     public function deleteUser($id)
     {        
         if ($this->isPost){

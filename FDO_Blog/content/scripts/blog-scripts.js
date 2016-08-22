@@ -20,3 +20,6 @@ function showValidationError(fieldName, errorMsg) {
     field.focus();
 };
 
+function vote() {
+
+}

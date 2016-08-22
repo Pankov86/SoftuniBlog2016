@@ -2,34 +2,23 @@
 
 <h1><?= htmlspecialchars($this->title)?></h1>
 
-<table>
-    <tr>
-        
-        <th>Username</th>
-        <th>Full name</th>
-        <th>Email</th>
-        <th>User group</th>
-        <th>Points</th>
-        <th>Comments count</th>
-        <th>Points given by user</th>
-    </tr>
+<?php $user_info = $this->user_info?>
 
-    <?php $user_info = $this->user_info?>
-<!--    --><?php //$user_group = $this->user_group?>
-<!--    --><?php //$user_activity = $this->user_activity?>
-   
+    <ul>
+        <li>Username: <?=$user_info['username']?></li>
+        <li>Full name: <?=$user_info['full_name']?></li>
+        <li>Email: <?= $user_info['email']?></li>
+        <li>User role: <?=$user_info['group_name']?></li>
+        <li>Comments count: <?=$user_info['comments_count']?></li>
+        <li>Points: <?=$user_info['points']?></li>
+        <li>Fucks given: <?=$user_info['points_given_by_user']?></li>
+    </ul>
 
+<form method="post" action="<?=APP_ROOT?>/users/edit">
+    <button type="submit">Edit profile</button>
+</form>
 
-        <tr>
-            
-            <td><?=$user_info['username']?></td>
-            <td><?=$user_info['full_name']?></td>
-            <td><?=$user_info['email']?></td>
-            <td><?=$user_info['group_name']?></td>
-            <td><?=$user_info['comments_count']?></td>
-            <td><?=$user_info['points']?></td>
-            <td><?=$user_info['points_given_by_user']?></td>
-            
-        </tr>
-</table>
+<form method="post" action="<?=APP_ROOT?>/users/pass">
+    <button type="submit">Edit password</button>
+</form>
 

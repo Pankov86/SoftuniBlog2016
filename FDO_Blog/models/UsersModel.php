@@ -2,9 +2,17 @@
 
 class UsersModel extends BaseModel
 {
-    public function deleteUserPosts()
+    public function editUserInfo(int $id, string $newFullname, string $newEmail)
     {
-        
+        $statement = self::$db->prepare(
+            "UPDATE users ".
+            "SET full_name = ?, email = ? ".
+            "WHERE id = ?");
+        $statement->bind_param("ssi", $newFullname, $newEmail, $id);
+        $statement->execute();
+
+        return $statement->affected_rows == 1;
+
     }
 
     public function makeAdmin($id)
@@ -37,7 +45,20 @@ class UsersModel extends BaseModel
             "WHERE user_id = $id)");
         return $statement->fetch_assoc();
     }
-    
+
+    public function getInfoForEdit($id)
+    {
+        $statement = self::$db->prepare(
+            "SELECT u.full_name, u.email "
+            ."FROM users u "
+            ."WHERE u.id = ?");
+
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_assoc();
+        return $result;
+    }
+
     public function getUserInfo($id)
     {
         $statement = self::$db->prepare(
@@ -81,7 +102,13 @@ class UsersModel extends BaseModel
         $query = self::$db->query("select * from users where username = '$username' or email = '$email'");
         return mysqli_num_rows($query);
     }
-    
+
+    public function checkUniqueEmail(string $email)
+    {
+        $query = self::$db->query("select * from users where email = '$email'");
+        return mysqli_num_rows($query);
+    }
+
     public function register(
         string $username, string $password, string $full_name, string $email)
     {
@@ -133,9 +160,24 @@ class UsersModel extends BaseModel
         $statement->bind_param("i", $id);
         $statement->execute();
         $result = $statement->get_result()->fetch_assoc();
-        return $result['group_name'];        
+        return $result['group_name'];
     }
-    
+
+    public function isOldPasswordValid($id, $oldPassword)
+    {
+        $statement = self::$db->prepare(
+            "SELECT password_hash FROM users WHERE id = ?");
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_assoc();
+        if (password_verify($oldPassword, $result['password_hash'])) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public function login(string $username, string $password)
     {
         $statement = self::$db->prepare(
