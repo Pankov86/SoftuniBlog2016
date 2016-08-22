@@ -9,6 +9,8 @@
     <?php endforeach; ?>
 </aside>
 
+
+
 <main>
     <?php foreach ($this->posts as $post) : ?>
         <h1><?= htmlentities($post['title']); ?></h1>

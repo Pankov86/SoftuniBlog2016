@@ -1,7 +1,12 @@
 <?php $this->title = 'Create new post'; ?>
 
 <h1><?=htmlspecialchars($this->title)?></h1>
-
+<aside>
+    <h3>Rules for posting</h3>
+    <ul>-Don't spam</ul>
+    <ul>-Don't use profanity</ul>
+    <ul>-Your post must be related to the category </ul>
+</aside>
 <form method="post">
     <div>Select category</div>
     <select name="category" >

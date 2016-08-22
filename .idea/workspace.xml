@@ -35,40 +35,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="UsersController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/UsersController.php">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FDO_Blog/views/users/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding>
-                <element signature="n#deleteUser#0;n#UsersController#0;n#!!top" expanded="false" />
-                <element signature="e#292#434#0#PHP" expanded="false" />
-                <element signature="n#makeAdmin#0;n#UsersController#0;n#!!top" expanded="false" />
-                <element signature="n#makeUser#0;n#UsersController#0;n#!!top" expanded="false" />
-                <element signature="n#login#0;n#UsersController#0;n#!!top" expanded="false" />
-                <element signature="n#logout#0;n#UsersController#0;n#!!top" expanded="false" />
-                <element signature="n#profile#0;n#UsersController#0;n#!!top" expanded="false" />
-                <element signature="n#index#0;n#UsersController#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/FDO_Blog/views/_layout/header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+            <state relative-caret-position="506">
+              <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="about.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/about.php">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FDO_Blog/views/posts/create.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -84,31 +75,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/HomeController.php">
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FDO_Blog/content/styles/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-              <folding>
-                <element signature="n#index#0;n#HomeController#0;n#!!top" expanded="false" />
-                <element signature="n#category#0;n#HomeController#0;n#!!top" expanded="false" />
-                <element signature="n#view#0;n#HomeController#0;n#!!top" expanded="false" />
-                <element signature="n#addComment#0;n#HomeController#0;n#!!top" expanded="false" />
-                <element signature="n#deleteComment#0;n#HomeController#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PostsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/PostsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="5" selection-start-line="5" selection-start-column="4" selection-end-line="8" selection-end-column="5" />
-              <folding>
-                <element signature="n#delete#0;n#PostsController#0;n#!!top" expanded="false" />
-                <element signature="n#edit#0;n#PostsController#0;n#!!top" expanded="false" />
-              </folding>
+            <state relative-caret-position="1518">
+              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -147,6 +119,9 @@
         <option value="$PROJECT_DIR$/FDO_Blog/controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/FDO_Blog/views/home/about.php" />
         <option value="$PROJECT_DIR$/FDO_Blog/views/_layout/header.php" />
+        <option value="$PROJECT_DIR$/FDO_Blog/content/styles/styles.css" />
+        <option value="$PROJECT_DIR$/FDO_Blog/views/posts/create.php" />
+        <option value="$PROJECT_DIR$/FDO_Blog/views/home/index.php" />
       </list>
     </option>
   </component>
@@ -191,7 +166,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -413,6 +387,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -514,11 +489,15 @@
       <workItem from="1471805871659" duration="151000" />
       <workItem from="1471865979148" duration="5457000" />
       <workItem from="1471872416417" duration="141000" />
+      <workItem from="1471872672666" duration="294000" />
+      <workItem from="1471873189546" duration="677000" />
+      <workItem from="1471874021416" duration="78000" />
+      <workItem from="1471874732700" duration="47000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43762000" />
+    <option name="totallyTimeSpent" value="44858000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -563,8 +542,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.html" />
-    <entry file="file://$PROJECT_DIR$/stiles/stile.css" />
     <entry file="file://$USER_HOME$/Desktop/Webstorm Projects/Softuni Javascript Lab 16.06.2016/9та задача.js" />
     <entry file="file://$USER_HOME$/Desktop/Resources for project/05. Software-Technologies-Blog-Template/BlogWithCustomFramework/scripts/controllers/homeController.js" />
     <entry file="file://$PROJECT_DIR$/register.html" />
@@ -674,13 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/users/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FDO_Blog/models/UsersModel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -728,7 +698,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -739,21 +708,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/posts/create.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -800,16 +755,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="n#deleteUser#0;n#UsersController#0;n#!!top" expanded="false" />
-            <element signature="e#292#434#0#PHP" expanded="false" />
-            <element signature="n#makeAdmin#0;n#UsersController#0;n#!!top" expanded="false" />
-            <element signature="n#makeUser#0;n#UsersController#0;n#!!top" expanded="false" />
-            <element signature="n#login#0;n#UsersController#0;n#!!top" expanded="false" />
-            <element signature="n#logout#0;n#UsersController#0;n#!!top" expanded="false" />
-            <element signature="n#profile#0;n#UsersController#0;n#!!top" expanded="false" />
-            <element signature="n#index#0;n#UsersController#0;n#!!top" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/about.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/_layout/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../FDO_Blog/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -817,13 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-          <folding>
-            <element signature="n#index#0;n#HomeController#0;n#!!top" expanded="false" />
-            <element signature="n#category#0;n#HomeController#0;n#!!top" expanded="false" />
-            <element signature="n#view#0;n#HomeController#0;n#!!top" expanded="false" />
-            <element signature="n#addComment#0;n#HomeController#0;n#!!top" expanded="false" />
-            <element signature="n#deleteComment#0;n#HomeController#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -831,10 +790,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="5" selection-start-line="5" selection-start-column="4" selection-end-line="8" selection-end-column="5" />
-          <folding>
-            <element signature="n#delete#0;n#PostsController#0;n#!!top" expanded="false" />
-            <element signature="n#edit#0;n#PostsController#0;n#!!top" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/users/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/content/styles/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1518">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -846,18 +817,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/about.php">
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/posts/create.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/_layout/header.php">
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        <state relative-caret-position="242">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
