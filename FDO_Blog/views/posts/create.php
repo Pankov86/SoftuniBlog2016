@@ -26,22 +26,23 @@
     <div>Title:</div>
     <input type="text" name="post_title">
 
+    <div>Choose a tag:</div>
+    <div>
+        <input id="tags" name="tags" list="tag_suggestions">
+        <?php $tags = $this->model->getTags() ?>
+
+        <datalist id="tag_suggestions">
+            <?php $tags = $this->model->getTags();
+            foreach ($tags as $tag) : ?>
+                <option value="<?=$tag['tag_name'] ?>" ></option>
+            <?php endforeach; ?>
+        </datalist>
+    </div>
+
     <div>Content:</div>
     <textarea rows="10" name="post_content"></textarea>
 
-<!--    <br>-->
-<!--    <div>Choose a tag:</div>-->
-<!--    <div>-->
-<!--    <input id="tags" name="tags" list="tag_suggestions">-->
-<!--        --><?php //$tags = $this->model->getTags() ?>
-<!---->
-<!--        <datalist id="tag_suggestions">-->
-<!--        --><?php //$tags = $this->model->getTags();
-//        foreach ($tags as $tag) : ?>
-<!--                    <option value="--><?//=$tag['tag_name'] ?><!--" ></option>-->
-<!--                --><?php //endforeach; ?>
-<!--    </datalist>-->
-<!--    </div>-->
+    <br>
 
     <div><input type="submit" value="Create post">
         <a href="<?=APP_ROOT?>/posts/viewAllPosts">[Cancel]</a></div>
