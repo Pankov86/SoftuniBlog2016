@@ -31,26 +31,29 @@ class UsersController extends BaseController
         $oldInfo = $this->model->getInfoForEdit($id);
         $newFullname = $oldInfo['full_name'];
         $newEmail = $oldInfo['email'];
+        $mailValid = true;
 
         if (!empty($_POST['newFullname'])|| !empty($_POST['newEmail'])){
 
-            if (isset($_POST['newFullname'])){
+            if (!empty($_POST['newFullname'])){
                 $newFullname = $_POST['newFullname'];
             }
-            if (isset($_POST['newEmail'])){
+            if (!empty($_POST['newEmail'])) {
                 $newEmail = $_POST['newEmail'];
 
-                if ($this->validateEmail($newEmail, 'newEmail')){
-                    if ($this->formValid()){
-                        $result = $this->model->editUserInfo($id, $newFullname, $newEmail);
-                        if ($result){
-                            $this->redirect('users', 'profile');
-                            $this->addInfoMessage("Changes saved.");
-                        }
-                        else{
-                            $this->addErrorMessage("Error: Edit failed.");
-                        }
-                    }
+                $this->validateEmail($newEmail, 'newEmail');
+
+            }
+
+            if ($this->formValid()){
+
+                $result = $this->model->editUserInfo($id, $newFullname, $newEmail);
+                if ($result){
+                    $this->redirect('users', 'profile');
+                    $this->addInfoMessage("Changes saved.");
+                }
+                else{
+                    $this->addErrorMessage("Error: Edit failed.");
                 }
             }
         }

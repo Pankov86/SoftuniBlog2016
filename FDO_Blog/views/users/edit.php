@@ -4,7 +4,7 @@
 
 <?php $old_user_info = $this->user_info ?>
 
-<form method="post" >
+s<form method="post" >
     <div>Full name:</div>
     <div><input type="text" name="newFullname" /></div>
 
