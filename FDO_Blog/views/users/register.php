@@ -13,5 +13,7 @@
     <div><input type="text" name="full_name"></div>
     Email address:
     <div><input type="text" name="email" required></div>
+    <div>About me(optional):</div>
+    <textarea rows="10" name="post_content"></textarea>
     <div><input type="submit" value="Register"></div>
 </form>

@@ -29,6 +29,7 @@ class HomeModel extends BaseModel
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
     
+
     function createComment($id, $user_id, $content)
     {
         $statement = self::$db->prepare(

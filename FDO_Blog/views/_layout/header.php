@@ -20,7 +20,7 @@
     <?php if ($this->isLoggedInAsAdmin) : ?>
         <a href="<?=APP_ROOT?>/posts">Posts</a>
         <a href="<?=APP_ROOT?>/posts/create">Create Post</a>
-        <a href="<?=APP_ROOT?>/users">Users</a>
+        <a href="<?=APP_ROOT?>/admin">Admin Panel</a>
 
 
     <?php elseif ($this->isLoggedIn) : ?>

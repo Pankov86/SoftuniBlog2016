@@ -14,6 +14,9 @@
         <li>Fucks given: <?=$user_info['points_given_by_user']?></li>
     </ul>
 
+
+
+
 <form method="post" action="<?=APP_ROOT?>/users/edit">
     <button type="submit">Edit profile</button>
 </form>

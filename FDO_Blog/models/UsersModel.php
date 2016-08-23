@@ -86,6 +86,7 @@ class UsersModel extends BaseModel
         return $result;
     }
 
+    
     public function getAll(): array
     {
         $statement = self::$db->query(
