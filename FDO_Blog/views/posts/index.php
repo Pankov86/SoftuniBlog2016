@@ -22,6 +22,10 @@
                 <a href="<?=APP_ROOT?>/posts/delete/<?=$post['id']?>">[Delete]</a>
             </td>
         </tr>
+        <?php var_dump($_SESSION['tag'])
+
+        ?>
+
     <?php endforeach; ?>
     </table>
 </main>

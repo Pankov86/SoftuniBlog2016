@@ -14,12 +14,16 @@ class PostsModel extends HomeModel
     
     function findTagByName(string $tag_name)
     {
-        $tag_id = self::$db->query(
-            "SELECT id ".
+        $tag_id = self::$db->prepare(
+            "SELECT * ".
             "FROM tags ".
-            "WHERE tag_name = $tag_name"
+            "WHERE tag_name = ?"
         );
-        return $tag_id;
+        $tag_id->bind_param("s", $tag_name);
+        $tag_id->execute();
+
+        $result = $tag_id->get_result()->fetch_assoc();
+        return $result;
     }
 
     function getCategories()
@@ -71,7 +75,7 @@ class PostsModel extends HomeModel
         return $result;
     }
 
-    public function create(string $title, string $content, int $user_id, int $category_id) :bool
+    public function create(string $title, string $content, int $user_id, int $category_id, int $tag_id) :bool
     {
         $statementPost = self::$db->prepare(
             "INSERT INTO posts(title, content, user_id) VALUES (?, ?, ?)"
@@ -86,6 +90,12 @@ class PostsModel extends HomeModel
             "VALUES (?, ?)");
         $statementCategory->bind_param("ii", $category_id, $post_id);
         $statementCategory->execute();
+
+        $statementTags = self::$db->prepare(
+            "INSERT INTO post_tag_interaction (post_id, tag_id) ".
+            "VALUES (?, ?)");
+        $statementTags->bind_param("ii", $post_id, $tag_id);
+        $statementTags->execute();
 
         return $statementPost->affected_rows == 1;
     }

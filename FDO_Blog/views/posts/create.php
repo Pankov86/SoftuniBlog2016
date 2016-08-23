@@ -28,7 +28,7 @@
 
     <div>Choose a tag:</div>
     <div>
-        <input id="tags" name="tags" list="tag_suggestions">
+        <input id="tags" name="tag_name" list="tag_suggestions">
         <?php $tags = $this->model->getTags() ?>
 
         <datalist id="tag_suggestions">
