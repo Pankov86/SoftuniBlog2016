@@ -14,10 +14,11 @@
 
         <td>
             <a href="<?=APP_ROOT?>/posts/edit/<?=$user['id']?>">[View Profile]</a>
-
         </td>
     </tr>
 <?php endforeach; ?>
+
+        <?php var_dump($_SESSION['info'])?>
 
 </table>
 </main>

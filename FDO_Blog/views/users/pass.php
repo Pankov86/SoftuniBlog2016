@@ -2,17 +2,21 @@
 
 <h1><?= htmlspecialchars($this->title) ?></h1>
 
-<?php $old_user_info = $this->user_info ?>
+<?php var_dump($_SESSION['old_password_valid'])?>
 
 <form method="post">
-    <div>Old Password:</div>
-    <div><input type="password" name="oldPassword"></div>
+    <div>Enter old Password:</div>
+    <div><input type="password" name="old_password"></div>
+    <?php
+            var_dump($_POST['old_password']);
 
-    <div>New Password:</div>
-    <div><input type="password" name="newPassword"></div>
+        ?>
 
-    <div>Confirm Password:</div>
-    <div><input type="password" name="confirmPassword"></div>
+    <div>Enter new Password:</div>
+    <div><input type="password" name="new_password"></div>
+
+    <div>Confirm new Password:</div>
+    <div><input type="password" name="confirm_password"></div>
 
     <div><input type="submit" value="Save changes" onsubmit="<?= $this->changePassword() ?>"></div>
 

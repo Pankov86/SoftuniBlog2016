@@ -23,7 +23,7 @@ abstract class BaseController
         }
 
         $this->isLoggedIn = isset($_SESSION['username']);
-        $this->isLoggedInAsAdmin = $this->isLoggedIn && $_SESSION['user_group'] == "admin";
+        $this->isLoggedInAsAdmin = $this->isLoggedIn && $_SESSION['group_id'] == 1;
 
         // Load the default model class for the current controller
         $modelClassName = ucfirst(strtolower($controllerName)) . 'Model';
