@@ -10,19 +10,36 @@
     </p>
     <p><?= $this->post['content']; ?></p>
 
-    <form id="vote-form" method="post" action="<?php
+    <form id="vote-form" method="post" action="">
 
-    if (isset($_POST['vote-button']))
-    {
-        if ($this->isPost) {
+        <?php
             $user_id = $_SESSION['user_id'];
-            if ($this->model->vote($this->post['id'], $user_id)) {
-                header("Location: " . APP_ROOT . '/home/view/' . $this->post['id']);
+
+            if (isset($_POST['vote-button'])) {
+                $this->model->vote($this->post['id'], $user_id);
+                $this->post['points']++;
             }
+
+            if (isset($_POST['unvote-button'])) {
+                $this->model->unVote($this->post['id'], $user_id);
+                $this->post['points']--;
+            }
+
+            var_dump($this->model->isVote($this->post['id'], $user_id));
+
+        if ($this->model->isVote($this->post['id'], $user_id)) { ?>
+            <input type="submit" value="Unvote" name="unvote-button"/>
+            <?php
+        } else {
+            ?>
+            <input type="submit" value="Vote" name="vote-button"/>
+
+            <?php
         }
-    }
-    ?>">
-        <input type="submit" value="Vote" name="vote-button"/>
+
+
+        ?>
+
     </form>
     <p><?= $this->post['points']; ?></p>
 

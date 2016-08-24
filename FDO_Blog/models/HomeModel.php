@@ -20,6 +20,37 @@ class HomeModel extends BaseModel
         return $statement->affected_rows == 1;
     }
 
+    function unVote(int $post_id, int $user_id){
+        $statement = self::$db->prepare
+        ("UPDATE posts ".
+            "SET points = points - 1 ".
+            "WHERE id = ?");
+        $statement->bind_param("i", $post_id);
+        $statement->execute();
+
+        $statement = self::$db->prepare(
+            "DELETE FROM post_user_status WHERE post_id = ? AND user_id = ?"
+        );
+        $statement->bind_param("ii", $post_id, $user_id);
+        $statement->execute();
+
+        return $statement->affected_rows == 1;
+
+    }
+
+    function isVote(int $post_id, int $user_id) {
+
+        $statement = self::$db->prepare(
+            "SELECT COUNT(*) count FROM post_user_status WHERE post_id = ? AND user_id = ?"
+        );
+        $statement->bind_param("ii", $post_id, $user_id);
+        $statement->execute();
+        $result = $statement->get_result() ->fetch_assoc();
+
+        return $result['count']==1;
+    }
+
+
     public function getAllPosts(){
         $statement = self::$db->query(
             "SELECT p.id, p.title, p.content, p.date, u.full_name "
