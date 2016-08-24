@@ -17,6 +17,5 @@
     <textarea rows="10" name="newAboutMe"></textarea>
 
 
-
     <input type="submit" value="Save changes" onsubmit="<?=$this->editUserInfo() ?>" />
 </form>

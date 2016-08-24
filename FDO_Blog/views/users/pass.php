@@ -2,15 +2,9 @@
 
 <h1><?= htmlspecialchars($this->title) ?></h1>
 
-<?php var_dump($_SESSION['old_password_valid'])?>
-
 <form method="post">
     <div>Enter old Password:</div>
     <div><input type="password" name="old_password"></div>
-    <?php
-            var_dump($_POST['old_password']);
-
-        ?>
 
     <div>Enter new Password:</div>
     <div><input type="password" name="new_password"></div>
