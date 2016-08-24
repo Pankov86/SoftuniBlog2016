@@ -31,9 +31,9 @@ class UsersController extends BaseController
         $oldInfo = $this->model->getInfoForEdit($id);
         $newFullname = $oldInfo['full_name'];
         $newEmail = $oldInfo['email'];
-        $mailValid = true;
+        $newAboutMe = $oldInfo['About'];
 
-        if (!empty($_POST['newFullname'])|| !empty($_POST['newEmail'])){
+        if (!empty($_POST['newFullname'])|| !empty($_POST['newEmail'] || !empty($_POST['newAboutMe']))){
 
             if (!empty($_POST['newFullname'])){
                 $newFullname = $_POST['newFullname'];
@@ -44,10 +44,14 @@ class UsersController extends BaseController
                 $this->validateEmail($newEmail, 'newEmail');
 
             }
+            if (!empty($_POST['newAboutMe'])){
+                $newAboutMe = $_POST['newAboutMe'];
+            }
+
 
             if ($this->formValid()){
 
-                $result = $this->model->editUserInfo($id, $newFullname, $newEmail);
+                $result = $this->model->editUserInfo($id, $newFullname, $newEmail,$newAboutMe);
                 if ($result){
                     $this->redirect('users', 'profile');
                     $this->addInfoMessage("Changes saved.");

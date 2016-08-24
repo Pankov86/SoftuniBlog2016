@@ -8,6 +8,7 @@
         <th>Username</th>
         <th>Full name</th>
         <th>User group</th>
+        
     </tr>
 
     <?php foreach ($this->users as $user) : ?>
@@ -16,6 +17,7 @@
         <td><?=$user['username']?></td>
         <td><?=$user['full_name']?></td>
         <td><?=$user['user_group']?></td>
+        
 
         <?php $role = $this->model->defineRole($user['id']); ?>
 

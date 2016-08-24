@@ -2,13 +2,13 @@
 
 class UsersModel extends BaseModel
 {
-    public function editUserInfo(int $id, string $newFullname, string $newEmail)
+    public function editUserInfo(int $id, string $newFullname, string $newEmail,string $newAboutMe)
     {
         $statement = self::$db->prepare(
             "UPDATE users ".
-            "SET full_name = ?, email = ? ".
+            "SET full_name = ?, email = ?, About = ? ".
             "WHERE id = ?");
-        $statement->bind_param("ssi", $newFullname, $newEmail, $id);
+        $statement->bind_param("sssi", $newFullname, $newEmail,$newAboutMe, $id);
         $statement->execute();
 
         return $statement->affected_rows == 1;
@@ -62,7 +62,7 @@ class UsersModel extends BaseModel
     public function getUserInfo($id)
     {
         $statement = self::$db->prepare(
-        "SELECT u.username, g.group_name, u.full_name, u.email, a.comments_count, a.points, a.points_given_by_user "
+        "SELECT u.username, g.group_name, u.full_name, u.email, u.About, a.comments_count, a.points, a.points_given_by_user "
         ."FROM users u "
         ."JOIN u_g_interaction ugi on ugi.user_id = u.id "
         ."JOIN groups g on ugi.group_id = g.id "

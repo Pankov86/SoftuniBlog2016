@@ -4,13 +4,18 @@
 
 <?php $old_user_info = $this->user_info ?>
 
-s<form method="post" >
+<form method="post" >
     <div>Full name:</div>
     <div><input type="text" name="newFullname" /></div>
 
 
     <div>New Email:</div>
     <div><input type="text" name="newEmail"/></div>
+
+
+    <div>About me:</div>
+    <textarea rows="10" name="newAboutMe"></textarea>
+
 
 
     <input type="submit" value="Save changes" onsubmit="<?=$this->editUserInfo() ?>" />

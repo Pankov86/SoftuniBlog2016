@@ -12,6 +12,7 @@
         <li>Comments count: <?=$user_info['comments_count']?></li>
         <li>Points: <?=$user_info['points']?></li>
         <li>Fucks given: <?=$user_info['points_given_by_user']?></li>
+        <li>About me: <?=$user_info['About']?></li>
     </ul>
 
 
