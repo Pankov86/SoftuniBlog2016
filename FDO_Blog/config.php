@@ -1,6 +1,6 @@
 <?php
 
-define('APP_ROOT', '/SoftuniBlog2016/trunk/FDO_Blog');
+define('APP_ROOT', '/SoftuniBlog2016/trunk/FDO_Blog') ;
 
 define('DEFAULT_CONTROLLER', 'home');
 define('DEFAULT_ACTION', 'index');
