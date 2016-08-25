@@ -97,6 +97,13 @@ abstract class BaseController
         }
     }
 
+    public function authorizeAdmin() {
+        if (! $this->isLoggedIn && !$this->isLoggedInAsAdmin) {
+            $this->addErrorMessage("Please login first.");
+            $this->redirect("users", "login");
+        }
+    }
+
     function addMessage(string $msg, string $type)
     {
         if (!isset($_SESSION['messages'])) {

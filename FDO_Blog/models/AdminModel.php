@@ -3,14 +3,18 @@ class AdminModel extends BaseModel
 {
     public function getAllUsers() : array
     {
-        $statement = self::$db->query(
+        $statement = self::$db->prepare(
             "SELECT u.id, u.username, g.group_name, u.email ".
             "FROM users u ".
-            "JOIN u_g_interaction ugi on ugi.user_id = u.id ".
-            "JOIN groups g on ugi.group_id = g.id ".
+            "LEFT JOIN u_g_interaction ugi on ugi.user_id = u.id ".
+            "LEFT JOIN groups g on ugi.group_id = g.id ".
             "ORDER BY username");
+        $statement->execute();
+        $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
 
-        return $statement->fetch_all(MYSQLI_ASSOC);
+        $_SESSION['result'] = $result;
+
+        return $result;
     }
 
     public function getUserInfo($id)
