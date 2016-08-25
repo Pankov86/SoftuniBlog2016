@@ -19,20 +19,17 @@
 
     <?php if ($this->isLoggedInAsAdmin) : ?>
         <a href="<?=APP_ROOT?>/posts">Posts</a>
+        <a href="<?=APP_ROOT?>/admin">Users</a>
         <a href="<?=APP_ROOT?>/posts/create">Create Post</a>
-        <a href="<?=APP_ROOT?>/admin">Admin Panel</a>
-
 
     <?php elseif ($this->isLoggedIn) : ?>
         <a href="<?=APP_ROOT?>/posts/viewAllPosts">All Posts</a>
         <a href="<?=APP_ROOT?>/posts">User Posts</a>
         <a href="<?=APP_ROOT?>/posts/create">Create Post</a>
 
-
     <?php else: ?>
         <a href="<?=APP_ROOT?>/users/login">Login</a>
         <a href="<?=APP_ROOT?>/users/register">Register</a>
-
 
     <?php endif; ?>
 

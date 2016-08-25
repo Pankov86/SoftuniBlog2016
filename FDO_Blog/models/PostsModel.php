@@ -108,7 +108,21 @@ class PostsModel extends HomeModel
         );
         $statement->bind_param("i", $id);
         $statement->execute();
-        
+
+        // Delete from category_post_interaction
+        $statement = self::$db->prepare(
+            "DELETE FROM category_post_interaction WHERE post_id = ?"
+        );
+        $statement->bind_param("i", $id);
+        $statement->execute();
+
+        // Delete from post_tag_interaction
+        $statement = self::$db->prepare(
+            "DELETE FROM post_tag_interaction WHERE post_id = ?"
+        );
+        $statement->bind_param("i", $id);
+        $statement->execute();
+
         //delete post
         $statement = self::$db->prepare(
             "DELETE FROM posts WHERE id = ?"

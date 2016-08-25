@@ -5,7 +5,7 @@
 <form method="post">
     <div>Title:</div>
     <input type="text" name="post_title" disabled
-            value="<?=htmlspecialchars($this->post['title'])?>">
+           value="<?=htmlspecialchars($this->post['title'])?>">
     <div>Content:</div>
     <textarea rows="10" name="post_content" disabled
     ><?=htmlspecialchars($this->post['content'])?></textarea>

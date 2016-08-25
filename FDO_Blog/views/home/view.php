@@ -25,8 +25,6 @@
                 $this->post['points']--;
             }
 
-            var_dump($this->model->isVote($this->post['id'], $user_id));
-
         if ($this->model->isVote($this->post['id'], $user_id)) { ?>
             <input type="submit" value="Unvote" name="unvote-button"/>
             <?php
@@ -36,8 +34,6 @@
 
             <?php
         }
-
-
         ?>
 
     </form>

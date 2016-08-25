@@ -44,21 +44,18 @@ class HomeController extends BaseController
 
     function addComment($post_id)
     {
-        if (isset($_POST['content']))
-        {
-            if ($this->isPost){
-                if (isset($_POST['content'])) {
-                    $content = $_POST['content'];
+        if ($this->isPost){
+            if (isset($_POST['comment_content'])) {
+                $content = $_POST['comment_content'];
 
-                    if ($this->formValid()) {
-                        $user_id = $_SESSION['user_id'];
-                        if ($this->model->createComment($post_id, $user_id, $content)) {
-                            $this->addInfoMessage("Comment created.");
-                            header("Location: " . APP_ROOT . '/home/view/' . $post_id);
-                            //$this->redirect('home', 'view', array($post_id));
-                        } else {
-                            $this->addErrorMessage("Error: cannot create comment.");
-                        }
+                if ($this->formValid()) {
+                    $user_id = $_SESSION['user_id'];
+                    if ($this->model->createComment($post_id, $user_id, $content)) {
+                        $this->addInfoMessage("Comment created.");
+                        header("Location: " . APP_ROOT . '/home/view/' . $post_id);
+                        //$this->redirect('home', 'view', array($post_id));
+                    } else {
+                        $this->addErrorMessage("Error: cannot create comment.");
                     }
                 }
             }
