@@ -15,9 +15,6 @@
         <li>About me: <?=$user_info['About']?></li>
     </ul>
 
-
-
-
 <form method="post" action="<?=APP_ROOT?>/users/edit">
     <button type="submit">Edit profile</button>
 </form>

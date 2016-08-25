@@ -29,7 +29,6 @@
         <a href="<?=APP_ROOT?>/posts/create">Create Post</a>
 
 
-
     <?php else: ?>
         <a href="<?=APP_ROOT?>/users/login">Login</a>
         <a href="<?=APP_ROOT?>/users/register">Register</a>

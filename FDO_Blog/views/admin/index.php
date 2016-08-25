@@ -1,26 +1,19 @@
-<main>
-    <table>
-        <tr>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Group</th>
-        </tr>
+<?php $this->title = "All users"; ?>
 
-<?php foreach ($this->users as $user) : ?>
+<h1><?= htmlspecialchars($this->title)?></h1>
+
+<table>
     <tr>
-        <td><?= htmlspecialchars($user['username'])?></td>
-        <td><?= htmlentities($user['email']); ?></td>
-        <td><?= cutLongText($user['group_name'])?></td>
-
-        <td>
-            <a href="<?=APP_ROOT?>/posts/edit/<?=$user['id']?>">[View Profile]</a>
-        </td>
+        <th>Username</th>
+        <th>Email</th>
+        <th>User group</th>
     </tr>
-<?php endforeach; ?>
 
-        <?php var_dump($_SESSION['info'])?>
-
+    <?php foreach ($this->users as $user) : ?>
+        <tr>
+            <td><a href="<?= APP_ROOT ?>/admin/details/<?php $user['id']?>"><?=$user['username']?></a></td>
+            <td><?=$user['email']?></td>
+            <td><?=$user['group_name']?></td>
+        </tr>
+    <?php endforeach; ?>
 </table>
-</main>
-
-

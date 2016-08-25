@@ -150,11 +150,7 @@ class HomeModel extends BaseModel
             ."FROM comments c "
             ."LEFT JOIN users u ON c.author_id = u.id "
             ."WHERE c.post_id = $id");
-//        $statement->bind_param("i", $id);
-//        $statement->execute();
-//
-//        $result = $statement->get_result()->fetch_assoc();
-//        return $result;
+
 
         return $statement->fetch_all(MYSQLI_ASSOC);
     }

@@ -1,9 +1,16 @@
 <?php
 class AdminController extends BaseController{
 
-    public function getAllUsers(){
+    public function index()
+    {
         $this->authorize();
         $this->users = $this->model->getAllUsers();
-        $_SESSION['info'] = $this->model->getAllUsers();
+    }
+
+    public function details($id)
+    {
+        $id = intval($id);
+        $_SESSION['id']= $id;
+        $this->user_info = $this->model->getUserInfo($id);
     }
 }
