@@ -104,8 +104,8 @@ class PostsModel extends HomeModel
     {
         //delete comments from this post
         $statement = self::$db->prepare(
-            "DELETE FROM comments WHERE post_id = ?"
-        );
+        "DELETE FROM comments WHERE post_id = ?"
+    );
         $statement->bind_param("i", $id);
         $statement->execute();
 
@@ -119,6 +119,13 @@ class PostsModel extends HomeModel
         // Delete from post_tag_interaction
         $statement = self::$db->prepare(
             "DELETE FROM post_tag_interaction WHERE post_id = ?"
+        );
+        $statement->bind_param("i", $id);
+        $statement->execute();
+
+        // Delete from post_user_status
+        $statement = self::$db->prepare(
+            "DELETE FROM post_user_status WHERE post_id = ?"
         );
         $statement->bind_param("i", $id);
         $statement->execute();
