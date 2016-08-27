@@ -5,5 +5,5 @@
     <div><input type="submit" value="Add comment" onsubmit="<?=
         $id = $this->post['id'];
         $this->addComment($id)?>">
-        <a href="<?=APP_ROOT?>/home/view/<?=$this->post['id']?>">[Cancel]</a></div>
+        <a href="<?=APP_ROOT?>/home/view/<?=$this->post['id']?>">[Delete text]</a></div>
 </form>
