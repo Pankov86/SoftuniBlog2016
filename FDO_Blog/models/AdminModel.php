@@ -32,4 +32,51 @@ class AdminModel extends BaseModel
         $result = $statement->get_result()->fetch_assoc();
         return $result;
     }
+
+    public function deleteUser($id) : bool
+    {
+        $statement = self::$db->prepare(
+            "DELETE FROM post_user_status WHERE user_id = ?"
+        );
+
+        $statement->bind_param("i", $id);
+        $statement->execute();
+
+        $adminID = $_SESSION['id'];
+        $statement = self::$db->prepare(
+            "UPDATE posts SET user_id =$adminID WHERE user_id =? "
+        );
+
+        $statement->bind_param("ii", $adminID, $id);
+        $statement->execute();
+
+        $statement = self::$db->prepare(
+            "DELETE FROM comments WHERE author_id = ?"
+        );
+
+        $statement->bind_param("i", $id);
+        $statement->execute();
+
+        $statement = self::$db->prepare(
+            "DELETE FROM u_g_interaction WHERE user_id = ?"
+        );
+
+        $statement->bind_param("i", $id);
+        $statement->execute();
+
+        $statement = self::$db->prepare(
+            "DELETE FROM activity WHERE user_id = ?"
+        );
+
+        $statement->bind_param("i", $id);
+        $statement->execute();
+
+        $statement = self::$db->prepare(
+            "DELETE FROM users WHERE id = ?"
+        );
+        $statement->bind_param("i", $id);
+        $statement->execute();
+
+        return $statement->affected_rows == 1;
+    }
 }

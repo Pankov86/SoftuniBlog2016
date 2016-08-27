@@ -25,6 +25,6 @@
     </button>
 </form>
 
-<form method="post" action="<?=APP_ROOT?>/users/edit">
-    <button type="submit">Delete user</button>
+<form method="post" action="<?=APP_ROOT?>/admin/index">
+    <input type="submit" value="Delete user" onsubmit="<? $this -> deleteUserAction($user_info['id'])?>">
 </form>
