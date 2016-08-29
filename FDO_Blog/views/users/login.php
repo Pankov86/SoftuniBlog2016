@@ -9,3 +9,7 @@
     <div><input type="password" name="password" required></div>
     <div><input type="submit" value="Login"></div>
 </form>
+
+<form action="<?=APP_ROOT?>/users/resetPass">
+    <div><input type="submit" value="Forget your password?"></div>
+</form>

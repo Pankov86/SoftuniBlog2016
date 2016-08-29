@@ -12,35 +12,43 @@
 
     <form id="vote-form" method="post" action="">
 
+
         <?php
-            $user_id = $_SESSION['user_id'];
+            if (isset($_SESSION['user_id'])){
+                $user_id = $_SESSION['user_id'];
 
-            if (isset($_POST['vote-button'])) {
-                $this->model->vote($this->post['id'], $user_id);
-                $this->post['points']++;
+                if (isset($_POST['vote-button'])) {
+                    $this->model->vote($this->post['id'], $user_id);
+                    $this->post['points']++;
+                }
+
+                if (isset($_POST['unvote-button'])) {
+                    $this->model->unVote($this->post['id'], $user_id);
+                    $this->post['points']--;
+                }
+
+                if ($this->model->isVote($this->post['id'], $user_id)) { ?>
+                    <input type="submit" value="Unvote" name="unvote-button"/>
+                    <?php
+                } else {
+                    ?>
+                    <input type="submit" value="Vote" name="vote-button"/>
+
+                    <?php
+                }
             }
-
-            if (isset($_POST['unvote-button'])) {
-                $this->model->unVote($this->post['id'], $user_id);
-                $this->post['points']--;
-            }
-
-        if ($this->model->isVote($this->post['id'], $user_id)) { ?>
-            <input type="submit" value="Unvote" name="unvote-button"/>
-            <?php
-        } else {
-            ?>
-            <input type="submit" value="Vote" name="vote-button"/>
-
-            <?php
-        }
         ?>
-
     </form>
-    <p><?= $this->post['points']; ?></p>
 
-    <?php $_SESSION['post_id'] = $this->post['id'] ?>
-    <?php include 'addComment.php' ?>
+    <h4>Fucks given for this post: <?= $this->post['points']; ?></h4>
+
+    <?php
+        if (isset($_SESSION['user_id'])){
+            $_SESSION['post_id'] = $this->post['id'] ;
+            include 'addComment.php';
+        }
+    ?>
+
     <?php include 'Comments.php' ?>
 </main>
 
