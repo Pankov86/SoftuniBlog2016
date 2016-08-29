@@ -47,7 +47,11 @@
             $_SESSION['post_id'] = $this->post['id'] ;
             include 'addComment.php';
         }
-    ?>
+        else if (!isset($_SESSION['user_id'])): ?>
+            <h4>
+                <a href="<?= APP_ROOT?>/users/login">Login to leave a comment</a>
+            </h4>
+    <?php endif; ?>
 
     <?php include 'Comments.php' ?>
 </main>

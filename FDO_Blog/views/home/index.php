@@ -2,8 +2,6 @@
 
 <h1><?=htmlspecialchars($this->title)?></h1>
 
-
-
 <main>
     <?php foreach ($this->posts as $post) : ?>
         <h1><a href="<?=APP_ROOT?>/home/view/<?= $post['id'] ?>">
