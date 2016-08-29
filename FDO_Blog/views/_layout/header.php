@@ -23,8 +23,8 @@
         <a href="<?=APP_ROOT?>/posts/create">Create Post</a>
 
     <?php elseif ($this->isLoggedIn) : ?>
-        <a href="<?=APP_ROOT?>/posts/viewAllPosts">All Posts</a>
-        <a href="<?=APP_ROOT?>/posts">User Posts</a>
+        <a href="<?=APP_ROOT?>/posts/index">All Posts</a>
+        <a href="<?=APP_ROOT?>/posts/user_posts">User Posts</a>
         <a href="<?=APP_ROOT?>/posts/create">Create Post</a>
 
     <?php else: ?>

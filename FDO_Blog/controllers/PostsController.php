@@ -8,7 +8,7 @@ class PostsController extends BaseController
         $this->authorize();
     }
 
-    function index() 
+    function user_posts()
     {
         if ($this->isLoggedInAsAdmin){
             $this->posts = $this->model->getAll();
@@ -24,7 +24,7 @@ class PostsController extends BaseController
         $this->post = $this->model->getById($id);
     }
     
-    function viewAllPosts(){
+    function index(){
         $this->posts = $this->model->getAll();
     }
 
@@ -95,20 +95,12 @@ class PostsController extends BaseController
                 $this->setValidationError("post_content", "Post content is empty.");
             }
 
-            $date = $_POST['post_date'];
-            $dateRegex = '/^\d{2,4}-\d{1,2}-\d{1,2}( \d{1,2}:\d{1,2}(:\d{1,2})?)?$/';
-            if (!preg_match($dateRegex, $date)){
-                $this->setValidationError("post_date", "Invalid date!");
-            }
+            $user_id = $_SESSION['user_id'];
 
-            $user_id = $_POST['user_id'];
-
-            if ($user_id <= 0 || $user_id > 1000000){
-                $this->setValidationError('user_id', "Invalid author ID.");
-            }
+            $date_edited = date('Y-m-d H:i:s');
 
             if ($this->formValid()){
-                if ($this->model->edit($id, $title, $content, $date, $user_id)){
+                if ($this->model->edit($id, $title, $content, $date_edited, $user_id)){
                     $this->addInfoMessage("Post edited.");
                     $this->redirect("posts");
                 }
@@ -117,7 +109,6 @@ class PostsController extends BaseController
                 }
                 $this->redirect('posts');
             }
-
         }
         $post = $this->model->getById($id);
         if (!$post){

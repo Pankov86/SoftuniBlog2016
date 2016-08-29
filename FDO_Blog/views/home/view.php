@@ -7,6 +7,8 @@
         <?= htmlentities($this->post['date']); ?>
         <i>by</i>
         <?= htmlentities($this->post['full_name']); ?>
+        <i> // Last edit: </i>
+        <?= htmlentities($this->post['date_edited']); ?>
     </p>
     <p><?= $this->post['content']; ?></p>
 

@@ -16,11 +16,6 @@
         <?php for ($i = 1; $i < count($categories); $i++): ?>
             <option value="<?=$categories[$i]['id'] ?>" ><?= $categories[$i]['category_name'] ?></option>
         <?php endfor; ?>
-
-        <!--        --><?php //$categories = $this->model->getCategories();
-        //        foreach ($categories as $category) : ?>
-        <!--            <option value="--><?//=$category['id'] ?><!--" >--><?//= $category['category_name'] ?><!--</option>-->
-        <!--        --><?php //endforeach; ?>
     </select>
 
     <div>Title:</div>
@@ -45,5 +40,5 @@
     <br>
 
     <div><input type="submit" value="Create post">
-        <a href="<?=APP_ROOT?>/posts/viewAllPosts">[Cancel]</a></div>
+        <a href="<?=APP_ROOT?>/posts">[Cancel]</a></div>
 </form>
