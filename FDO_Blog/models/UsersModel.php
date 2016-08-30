@@ -2,7 +2,44 @@
 
 class UsersModel extends BaseModel
 {
+    public function getIdByEmail($email)
+    {
+        $statement = self::$db->prepare(
+            "SELECT * FROM users WHERE email = ?"
+        );
+        $statement->bind_param("s", $email);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_assoc();
+        return $result['id'];
+    }
+
+    public function checkEmail($email)
+    {
+        $statement = self::$db->prepare(
+            "SELECT * FROM users WHERE email = ?"
+        );
+        $statement->bind_param("s", $email);
+        $statement->execute();
+        return $statement->get_result()->num_rows == 1;
+    }
+
+    public function changePassword(int $id, string $new_password)
+    {
+        $new_password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+
+        $statement = self::$db->prepare(
+            "UPDATE users SET password_hash = ? WHERE id = ?"
+        );
+        $statement->bind_param("si", $new_password_hash, $id);
+        $statement->execute();
+
+        $result = $statement->affected_rows == 1;
+        return $result;
+    }
+
+
     public function editUserInfo(int $id, string $newFullname, string $newEmail,string $newAboutMe)
+
     {
         $statement = self::$db->prepare(
             "UPDATE users ".
@@ -49,7 +86,7 @@ class UsersModel extends BaseModel
     public function getInfoForEdit($id)
     {
         $statement = self::$db->prepare(
-            "SELECT u.full_name, u.email "
+            "SELECT u.full_name, u.email, u.About "
             ."FROM users u "
             ."WHERE u.id = ?");
 
@@ -62,20 +99,17 @@ class UsersModel extends BaseModel
     public function getUserInfo($id)
     {
         $statement = self::$db->prepare(
-        "SELECT u.username, g.group_name, u.full_name, u.email, u.About, a.comments_count, a.points, a.points_given_by_user "
+        "SELECT u.username, g.group_name, u.full_name, u.email, u.About, a.comments_count, a.posts_count, a.points_given_by_user "
         ."FROM users u "
-        ."JOIN u_g_interaction ugi on ugi.user_id = u.id "
-        ."JOIN groups g on ugi.group_id = g.id "
-        ."JOIN activity a on a.user_id = u.id "
+        ."LEFT JOIN u_g_interaction ugi on ugi.user_id = u.id "
+        ."LEFT JOIN groups g on ugi.group_id = g.id "
+        ."LEFT JOIN activity a on a.user_id = u.id "
         ."WHERE u.id = ?");
 
         $statement->bind_param("i", $id);
         $statement->execute();
         $result = $statement->get_result()->fetch_assoc();
         return $result;
-        
-        //$statement = self::$db->query("SELECT username, full_name, email FROM users WHERE id = $id");
-        //return $statement->fetch_all(MYSQLI_ASSOC);
     }
 
     public function getActivity($id){
@@ -91,33 +125,32 @@ class UsersModel extends BaseModel
     {
         $statement = self::$db->query(
             "SELECT users.id, users.username, users.full_name, user_group_interaction.user_group ".
-            "FROM users JOIN u_g_interaction ".
+            "FROM users LEFT JOIN u_g_interaction ".
             "ON users.id = user_group_interaction.user_id ".
             "ORDER BY username");
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function checkUniqueUserAndMail(
-        string $username, string $email)
+    public function checkUniqueUsername(string $username)
     {
-        $query = self::$db->query("select * from users where username = '$username' or email = '$email'");
+        $query = self::$db->query("SELECT * FROM users WHERE username = '$username'");
         return mysqli_num_rows($query);
     }
 
     public function checkUniqueEmail(string $email)
     {
-        $query = self::$db->query("select * from users where email = '$email'");
+        $query = self::$db->query("SELECT * FROM users WHERE email = '$email'");
         return mysqli_num_rows($query);
     }
 
     public function register(
-        string $username, string $password, string $full_name, string $email)
+        string $username, string $password, string $full_name, string $email, string $about)
     {
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
         $statement = self::$db->prepare(
-            "INSERT INTO users (username, password_hash, full_name, email) ".
-            "VALUES (?, ?, ?, ?)");
-        $statement->bind_param("ssss", $username, $password_hash, $full_name, $email);
+            "INSERT INTO users (username, password_hash, full_name, email, About) ".
+            "VALUES (?, ?, ?, ?, ?)");
+        $statement->bind_param("sssss", $username, $password_hash, $full_name, $email, $about);
         $statement->execute();
         if ($statement->affected_rows != 1){
             return false;
@@ -178,6 +211,8 @@ class UsersModel extends BaseModel
             return false;
         }
     }
+
+
 
     public function login(string $username, string $password)
     {
