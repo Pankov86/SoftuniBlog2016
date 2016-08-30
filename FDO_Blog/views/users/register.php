@@ -54,7 +54,7 @@
                        placeholder="Tell us something about yourself"></textarea>
             </div>
         </div>
-c
+
         <div class="checkbox">
             <label><input type="checkbox"> Remember me</label>
         </div>
