@@ -1,6 +1,18 @@
 <?php
 class AdminModel extends BaseModel
 {
+    public function getPostsFromUser($id)
+    {
+        $statement = self::$db->prepare(
+            "SELECT * FROM posts ".
+            "LEFT JOIN users ".
+            "ON posts.user_id = users.id ".
+            "WHERE posts.user_id = ?"
+        );
+        $statement->bind_param("i", $id);
+
+    }
+
     public function getUserNameById($id)
     {
         $statement = self::$db->query(
@@ -41,14 +53,11 @@ class AdminModel extends BaseModel
     public function deleteUser(int $id) : bool
     {
         $this->deleteUserFromActivity($id);
-
         $result = $this->deleteUserFromComments($id);
-        $_SESSION['delete'] = $result;
-
-            $this->deleteUserFromPostUserStatus($id);
+        $this->deleteUserFromPostUserStatus($id);
         $this->deleteUserFromUGInteraction($id);
 
-        $this->copyPostsFromUserToDeletedPosts($id);
+        //$this->copyPostsFromUserToDeletedPosts($id);
         $posts = $this->getUserPosts($id);
         $this->deleteUserFromPosts($id, $posts);
 
@@ -70,7 +79,6 @@ class AdminModel extends BaseModel
         );
         $statement->bind_param("i", $user_id);
         $statement->execute();
-
     }
 
     public function deleteUserFromComments(int $user_id)
@@ -91,7 +99,7 @@ class AdminModel extends BaseModel
         $statement->execute();
     }
 
-    public function deleteUserFromUGInteraction($user_id)
+    public function deleteUserFromUGInteraction(int $user_id)
     {
         $statement = self::$db->prepare(
             "DELETE FROM u_g_interaction WHERE user_id = ?"
@@ -104,18 +112,22 @@ class AdminModel extends BaseModel
     {
         // Get user posts
         $posts = $this->getUserPosts($user_id);
+        $_SESSION['id'] = $user_id;
 
-        // Insert posts in table "deleted_posts"
-        $this->insertDeletedPostsInDeletedTable($posts);
-
+        if ($posts != null){
+            // Insert posts in table "deleted_posts"
+            $this->insertDeletedPostsInDeletedTable($posts);
+        }
     }
 
     public function getUserPosts($user_id)
     {
         $statement = self::$db->prepare(
-            "SELECT p.title, p.content, p.points, p.views_count, u.username, u.email ".
+            "SELECT p.title, p.content, p.points, p.views_count, u.username, u.email, pti.tag_id, cpi.category_id ".
             "FROM posts p ".
             "LEFT JOIN users u ON p.user_id = u.id ".
+            "LEFT JOIN post_tag_interaction pti ON p.id = pti.post_id ".
+            "LEFT JOIN category_post_interaction cpi ON p.id = cpi.post_id ".
             "WHERE p.user_id = ?"
         );
         $statement->bind_param("i", $user_id);
@@ -124,28 +136,30 @@ class AdminModel extends BaseModel
         return $result;
     }
 
-
-    public function insertDeletedPostsInDeletedTable($posts)
-    {
-        foreach ($posts as $post){
-            $title = $post['title'];
-            $content = $post['content'];
-            $points = $post['points'];
-            $views_count = $post['views_count'];
-            $username = $post['username'];
-            $email = $post['email'];
-            $reason = "User deleted";
-
-            $statement = self::$db->prepare(
-                "INSERT INTO deleted_posts ".
-                "post_title, post_content, points, views_count, author_name, author_email, reason_to_be_deleted  ".
-                "VALUES (?, ?, ?, ?, ?, ?, ?)"
-            );
-            $statement->bind_param("ssiisss", $title, $content, $points, $views_count, $username, $email, $reason);
-            $statement->execute();
-
-        }
-    }
+//    public function insertDeletedPostsInDeletedTable($posts)
+//    {
+//        if ($posts != null){
+//            foreach ($posts as $post){
+//                $title = $post['title'];
+//                $content = $post['content'];
+//                $points = $post['points'];
+//                $views_count = $post['views_count'];
+//                $username = $post['username'];
+//                $email = $post['email'];
+//                $reason = "User deleted";
+//                $category_id = $post['category_id'];
+//                $tag_id = $post['tag_id'];
+//
+//                $statement = self::$db->prepare(
+//                    "INSERT INTO deleted_posts ".
+//                    "(post_title, post_content, points, views_count, author_name, author_email, reason_to_be_deleted, categoty_id, tag_id) ".
+//                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+//                );
+//                $statement->bind_param("ssiisssii", $title, $content, $points, $views_count, $username, $email, $reason, $category_id, $tag_id);
+//                $statement->execute();
+//            }
+//        }
+//    }
 
     public function deleteUserFromPosts($user_id, $user_posts)
     {
@@ -181,12 +195,6 @@ class AdminModel extends BaseModel
         //delete post
         $statement = self::$db->prepare(
             "DELETE FROM posts WHERE user_id = ?"
-        );
-        $statement->bind_param("i", $user_id);
-        $statement->execute();
-
-        $statement = self::$db->prepare(
-            "DELETE FROM users WHERE id = ?"
         );
         $statement->bind_param("i", $user_id);
         $statement->execute();

@@ -17,7 +17,7 @@
 </ul>
 
 <!--<form method="post" action="--><?//=APP_ROOT?><!--/users/edit">-->
-<!--    <button type="submit">-->
+<!--    <button type="submit" onsubmit="--><?php //$this->model-> ?><!--">-->
 <!--        --><?php //if ($user_info['group_name'] == 'user') :?>
 <!--        Make moderator-->
 <!--        --><?php //else : ?>
