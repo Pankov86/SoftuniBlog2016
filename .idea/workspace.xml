@@ -31,10 +31,6 @@
         <option name="myItemId" value="MySQL - FDO_Blog@localhost" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="users" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
     </PATH>
     <PATH>
       <PATH_ELEMENT>
@@ -45,6 +41,10 @@
         <option name="myItemId" value="MySQL - FDO_Blog@localhost" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="activity" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
     </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -53,97 +53,123 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="UsersModel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FDO_Blog/models/UsersModel.php">
+      <file leaf-file-name="comments.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/comments.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="64" column="72" selection-start-line="64" selection-start-column="72" selection-end-line="64" selection-end-column="72" />
+            <state relative-caret-position="440">
+              <caret line="20" column="112" selection-start-line="20" selection-start-column="112" selection-end-line="20" selection-end-column="112" />
               <folding>
-                <element signature="n#makeAdmin#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <element signature="n#makeUser#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <element signature="n#defineRole#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <element signature="n#getInfoForEdit#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <element signature="n#getActivity#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <element signature="n#getAll#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <element signature="n#checkUniqueUserAndMail#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <element signature="n#checkUniqueEmail#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <element signature="n#register#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <element signature="n#createNewUserActivity#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <element signature="n#getGroupIdByGroupName#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <element signature="n#fillUGInteraction#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <element signature="n#getGroupById#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <element signature="n#isOldPasswordValid#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <element signature="n#login#0;n#UsersModel#0;n#!!top" expanded="false" />
-                <marker date="1472035932947" expanded="true" signature="569:641" ph="UPDATE user_... " />
-                <marker date="1472035932947" expanded="true" signature="875:946" ph="UPDATE user_... " />
-                <marker date="1472035932947" expanded="true" signature="2580:2663" ph="SELECT point... activity" />
-                <marker date="1472035932947" expanded="true" signature="3344:3412" ph="select * fro... users" />
-                <marker date="1472035932947" expanded="true" signature="3556:3598" ph="select * fro... users" />
-                <marker date="1472035932947" expanded="true" signature="3886:3983" ph="INSERT INTO users... " />
-                <marker date="1472035932947" expanded="true" signature="4404:4445" ph="INSERT INTO activity... " />
-                <marker date="1472035932947" expanded="true" signature="4712:4754" ph="SELECT id FR... groups" />
-                <marker date="1472035932947" expanded="true" signature="5040:5101" ph="INSERT INTO u_g_interaction... " />
-                <marker date="1472035932947" expanded="true" signature="5377:5474" ph="SELECT group... groups" />
-                <marker date="1472035932947" expanded="true" signature="5419:5473" ph="SELECT group... u_g_interaction" />
-                <marker date="1472035932947" expanded="true" signature="5773:5817" ph="SELECT passw... users" />
-                <marker date="1472035932947" expanded="true" signature="6239:6306" ph="SELECT id, p... users" />
+                <marker date="1472549075059" expanded="true" signature="902:989" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/BaseController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-638">
-              <caret line="25" column="91" selection-start-line="25" selection-start-column="91" selection-end-line="25" selection-end-column="91" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/HomeController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-              <folding>
-                <element signature="n#about#0;n#HomeController#0;n#!!top" expanded="false" />
-                <element signature="n#index#0;n#HomeController#0;n#!!top" expanded="false" />
-                <element signature="n#getAllCategories#0;n#HomeController#0;n#!!top" expanded="false" />
-                <element signature="n#category#0;n#HomeController#0;n#!!top" expanded="false" />
-                <element signature="n#view#0;n#HomeController#0;n#!!top" expanded="false" />
-                <element signature="n#addComment#0;n#HomeController#0;n#!!top" expanded="false" />
-                <element signature="n#deleteComment#0;n#HomeController#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PostsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/PostsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="33" column="45" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UsersController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UsersController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/UsersController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-877">
-              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+            <state relative-caret-position="-1606">
+              <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
               <folding>
+                <element signature="n#resetPass#0;n#UsersController#0;n#!!top" expanded="false" />
+                <element signature="n#pass#0;n#UsersController#0;n#!!top" expanded="false" />
                 <element signature="n#edit#0;n#UsersController#0;n#!!top" expanded="false" />
                 <element signature="n#validateEmail#0;n#UsersController#0;n#!!top" expanded="false" />
                 <element signature="n#editUserInfo#0;n#UsersController#0;n#!!top" expanded="false" />
+                <element signature="n#changePasswordWithoutLogin#0;n#UsersController#0;n#!!top" expanded="false" />
                 <element signature="n#changePassword#0;n#UsersController#0;n#!!top" expanded="false" />
                 <element signature="n#deleteUser#0;n#UsersController#0;n#!!top" expanded="false" />
                 <element signature="n#makeAdmin#0;n#UsersController#0;n#!!top" expanded="false" />
                 <element signature="n#makeUser#0;n#UsersController#0;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeModel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FDO_Blog/models/HomeModel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="484">
+              <caret line="107" column="46" selection-start-line="107" selection-start-column="46" selection-end-line="107" selection-end-column="46" />
+              <folding>
+                <element signature="n#vote#0;n#HomeModel#0;n#!!top" expanded="false" />
+                <element signature="n#unVote#0;n#HomeModel#0;n#!!top" expanded="false" />
+                <element signature="n#isVote#0;n#HomeModel#0;n#!!top" expanded="false" />
+                <element signature="n#getAllPosts#0;n#HomeModel#0;n#!!top" expanded="false" />
+                <element signature="n#getCommentById#0;n#HomeModel#0;n#!!top" expanded="false" />
+                <element signature="n#getCategoryById#0;n#HomeModel#0;n#!!top" expanded="false" />
+                <element signature="n#getPostsByCategory#0;n#HomeModel#0;n#!!top" expanded="false" />
+                <element signature="n#getCategories#0;n#HomeModel#0;n#!!top" expanded="false" />
+                <element signature="n#getPostById#0;n#HomeModel#0;n#!!top" expanded="false" />
+                <element signature="n#getPostComments#0;n#HomeModel#0;n#!!top" expanded="false" />
+                <marker date="1472547438884" expanded="true" signature="608:669" ph="INSERT INTO post_user_status... " />
+                <marker date="1472547438884" expanded="true" signature="1393:1455" ph="DELETE FROM " />
+                <marker date="1472547438884" expanded="true" signature="1718:1795" ph="SELECT COUNT... " />
+                <marker date="1472547438884" expanded="true" signature="2672:2760" ph="INSERT INTO comments... " />
+                <marker date="1472547438884" expanded="true" signature="3017:3051" ph="SELECT * FRO... comments" />
+                <marker date="1472547438884" expanded="true" signature="3493:3526" ph="DELETE FROM " />
+                <marker date="1472547438884" expanded="true" signature="4743:4818" ph="UPDATE posts... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FDO_Blog/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3a7f9c6b-5f95-41bb-8674-33c39b994fc7/console.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addComment.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/addComment.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deleteComment.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/deleteComment.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/FDO_Blog/views/users/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -181,7 +207,6 @@
         <option value="$PROJECT_DIR$/FDO_Blog/views/posts/create.php" />
         <option value="$PROJECT_DIR$/FDO_Blog/views/home/index.php" />
         <option value="$PROJECT_DIR$/FDO_Blog/config.php" />
-        <option value="$PROJECT_DIR$/FDO_Blog/models/HomeModel.php" />
         <option value="$PROJECT_DIR$/FDO_Blog/controllers/BaseController.php" />
         <option value="$PROJECT_DIR$/FDO_Blog/views/_layout/header.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba7c61a8-89d2-47c5-aff3-f471272a35fc/console_1.sql" />
@@ -195,6 +220,11 @@
         <option value="$PROJECT_DIR$/FDO_Blog/views/users/edit.php" />
         <option value="$PROJECT_DIR$/FDO_Blog/models/UsersModel.php" />
         <option value="$PROJECT_DIR$/FDO_Blog/controllers/UsersController.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/46651e71-1f05-4d8e-a28a-5381b22ef1fa/console.sql" />
+        <option value="$PROJECT_DIR$/FDO_Blog/models/HomeModel.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/fa5ea27d-c51a-4e9e-b854-331baac2ba5c/console.sql" />
+        <option value="$PROJECT_DIR$/FDO_Blog/views/home/comments.php" />
+        <option value="$PROJECT_DIR$/FDO_Blog/views/users/login.php" />
       </list>
     </option>
   </component>
@@ -463,8 +493,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -573,11 +603,16 @@
       <workItem from="1471939871758" duration="9948000" />
       <workItem from="1471951140386" duration="6142000" />
       <workItem from="1472029999898" duration="6142000" />
+      <workItem from="1472546492752" duration="143000" />
+      <workItem from="1472546658328" duration="22000" />
+      <workItem from="1472546868966" duration="546000" />
+      <workItem from="1472547453246" duration="1176000" />
+      <workItem from="1472548656370" duration="2765000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67090000" />
+    <option name="totallyTimeSpent" value="71742000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -586,13 +621,13 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25364584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16458334" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14010416" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -617,41 +652,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="dbDummy://dbtable:/7dd396ab/8d6f45b5-b846-443c-9c45-d27b8848c50c/fdo_blog.users" />
-    <entry file="dbDummy://dbtable:/7dd396ab/8d6f45b5-b846-443c-9c45-d27b8848c50c/fdo_blog.activity" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6e998d93-a0b7-41d7-be0a-f118f5b35ed8/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/49b2db50-ce6f-4653-812e-42799d36bcfd/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7fca7114-9e2b-45b3-a990-6b3ece00ae50/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/content/scripts/blog-scripts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/abb0e258-8c7f-4bd2-9cc6-7dad61200e32/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -680,13 +685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/users/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FDO_Blog/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -695,38 +693,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/deleteComment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/comments.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/category.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/addComment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -750,13 +720,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1518">
           <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -806,7 +769,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -828,7 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="52" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -836,14 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/models/HomeModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -851,7 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -859,7 +811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -867,7 +818,149 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="51" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ebef278a-a1b7-4501-9fcb-c7b15939cfd0/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/_layout/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/posts/edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/users/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/users/edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="20" column="79" selection-start-line="20" selection-start-column="66" selection-end-line="20" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/users/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/users/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/models/UsersModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2222">
+          <caret line="101" column="72" selection-start-line="101" selection-start-column="72" selection-end-line="101" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/BaseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="25" column="91" selection-start-line="25" selection-start-column="91" selection-end-line="25" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/PostsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="33" column="45" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/7dd396ab/46651e71-1f05-4d8e-a28a-5381b22ef1fa/fdo_blog.users" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/46651e71-1f05-4d8e-a28a-5381b22ef1fa/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/766e899e-ceed-460b-8560-53204eeb5f7e/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/addComment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/fa5ea27d-c51a-4e9e-b854-331baac2ba5c/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3a7f9c6b-5f95-41bb-8674-33c39b994fc7/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/7dd396ab/3a7f9c6b-5f95-41bb-8674-33c39b994fc7/fdo_blog.activity">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -879,7 +972,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ebef278a-a1b7-4501-9fcb-c7b15939cfd0/console.sql">
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/UsersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1606">
+          <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+          <folding>
+            <element signature="n#resetPass#0;n#UsersController#0;n#!!top" expanded="false" />
+            <element signature="n#pass#0;n#UsersController#0;n#!!top" expanded="false" />
+            <element signature="n#edit#0;n#UsersController#0;n#!!top" expanded="false" />
+            <element signature="n#validateEmail#0;n#UsersController#0;n#!!top" expanded="false" />
+            <element signature="n#editUserInfo#0;n#UsersController#0;n#!!top" expanded="false" />
+            <element signature="n#changePasswordWithoutLogin#0;n#UsersController#0;n#!!top" expanded="false" />
+            <element signature="n#changePassword#0;n#UsersController#0;n#!!top" expanded="false" />
+            <element signature="n#deleteUser#0;n#UsersController#0;n#!!top" expanded="false" />
+            <element signature="n#makeAdmin#0;n#UsersController#0;n#!!top" expanded="false" />
+            <element signature="n#makeUser#0;n#UsersController#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/models/HomeModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="107" column="46" selection-start-line="107" selection-start-column="46" selection-end-line="107" selection-end-column="46" />
+          <folding>
+            <element signature="n#vote#0;n#HomeModel#0;n#!!top" expanded="false" />
+            <element signature="n#unVote#0;n#HomeModel#0;n#!!top" expanded="false" />
+            <element signature="n#isVote#0;n#HomeModel#0;n#!!top" expanded="false" />
+            <element signature="n#getAllPosts#0;n#HomeModel#0;n#!!top" expanded="false" />
+            <element signature="n#getCommentById#0;n#HomeModel#0;n#!!top" expanded="false" />
+            <element signature="n#getCategoryById#0;n#HomeModel#0;n#!!top" expanded="false" />
+            <element signature="n#getPostsByCategory#0;n#HomeModel#0;n#!!top" expanded="false" />
+            <element signature="n#getCategories#0;n#HomeModel#0;n#!!top" expanded="false" />
+            <element signature="n#getPostById#0;n#HomeModel#0;n#!!top" expanded="false" />
+            <element signature="n#getPostComments#0;n#HomeModel#0;n#!!top" expanded="false" />
+            <marker date="1472547438884" expanded="true" signature="608:669" ph="INSERT INTO post_user_status... " />
+            <marker date="1472547438884" expanded="true" signature="1393:1455" ph="DELETE FROM " />
+            <marker date="1472547438884" expanded="true" signature="1718:1795" ph="SELECT COUNT... " />
+            <marker date="1472547438884" expanded="true" signature="2672:2760" ph="INSERT INTO comments... " />
+            <marker date="1472547438884" expanded="true" signature="3017:3051" ph="SELECT * FRO... comments" />
+            <marker date="1472547438884" expanded="true" signature="3493:3526" ph="DELETE FROM " />
+            <marker date="1472547438884" expanded="true" signature="4743:4818" ph="UPDATE posts... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/comments.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="20" column="112" selection-start-line="20" selection-start-column="112" selection-end-line="20" selection-end-column="112" />
+          <folding>
+            <marker date="1472549075059" expanded="true" signature="902:989" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/home/deleteComment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -887,136 +1035,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/_layout/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/posts/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/users/index.php">
+    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/users/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
-          <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
+          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/users/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="79" selection-start-line="20" selection-start-column="66" selection-end-line="20" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/users/profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/views/users/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/models/UsersModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="64" column="72" selection-start-line="64" selection-start-column="72" selection-end-line="64" selection-end-column="72" />
-          <folding>
-            <element signature="n#makeAdmin#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <element signature="n#makeUser#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <element signature="n#defineRole#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <element signature="n#getInfoForEdit#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <element signature="n#getActivity#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <element signature="n#getAll#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <element signature="n#checkUniqueUserAndMail#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <element signature="n#checkUniqueEmail#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <element signature="n#register#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <element signature="n#createNewUserActivity#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <element signature="n#getGroupIdByGroupName#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <element signature="n#fillUGInteraction#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <element signature="n#getGroupById#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <element signature="n#isOldPasswordValid#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <element signature="n#login#0;n#UsersModel#0;n#!!top" expanded="false" />
-            <marker date="1472035932947" expanded="true" signature="569:641" ph="UPDATE user_... " />
-            <marker date="1472035932947" expanded="true" signature="875:946" ph="UPDATE user_... " />
-            <marker date="1472035932947" expanded="true" signature="2580:2663" ph="SELECT point... activity" />
-            <marker date="1472035932947" expanded="true" signature="3344:3412" ph="select * fro... users" />
-            <marker date="1472035932947" expanded="true" signature="3556:3598" ph="select * fro... users" />
-            <marker date="1472035932947" expanded="true" signature="3886:3983" ph="INSERT INTO users... " />
-            <marker date="1472035932947" expanded="true" signature="4404:4445" ph="INSERT INTO activity... " />
-            <marker date="1472035932947" expanded="true" signature="4712:4754" ph="SELECT id FR... groups" />
-            <marker date="1472035932947" expanded="true" signature="5040:5101" ph="INSERT INTO u_g_interaction... " />
-            <marker date="1472035932947" expanded="true" signature="5377:5474" ph="SELECT group... groups" />
-            <marker date="1472035932947" expanded="true" signature="5419:5473" ph="SELECT group... u_g_interaction" />
-            <marker date="1472035932947" expanded="true" signature="5773:5817" ph="SELECT passw... users" />
-            <marker date="1472035932947" expanded="true" signature="6239:6306" ph="SELECT id, p... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/BaseController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-638">
-          <caret line="25" column="91" selection-start-line="25" selection-start-column="91" selection-end-line="25" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding>
-            <element signature="n#about#0;n#HomeController#0;n#!!top" expanded="false" />
-            <element signature="n#index#0;n#HomeController#0;n#!!top" expanded="false" />
-            <element signature="n#getAllCategories#0;n#HomeController#0;n#!!top" expanded="false" />
-            <element signature="n#category#0;n#HomeController#0;n#!!top" expanded="false" />
-            <element signature="n#view#0;n#HomeController#0;n#!!top" expanded="false" />
-            <element signature="n#addComment#0;n#HomeController#0;n#!!top" expanded="false" />
-            <element signature="n#deleteComment#0;n#HomeController#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/PostsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="33" column="45" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FDO_Blog/controllers/UsersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-877">
-          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-          <folding>
-            <element signature="n#edit#0;n#UsersController#0;n#!!top" expanded="false" />
-            <element signature="n#validateEmail#0;n#UsersController#0;n#!!top" expanded="false" />
-            <element signature="n#editUserInfo#0;n#UsersController#0;n#!!top" expanded="false" />
-            <element signature="n#changePassword#0;n#UsersController#0;n#!!top" expanded="false" />
-            <element signature="n#deleteUser#0;n#UsersController#0;n#!!top" expanded="false" />
-            <element signature="n#makeAdmin#0;n#UsersController#0;n#!!top" expanded="false" />
-            <element signature="n#makeUser#0;n#UsersController#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

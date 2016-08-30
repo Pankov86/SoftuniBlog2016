@@ -11,5 +11,5 @@
 </form>
 
 <form action="<?=APP_ROOT?>/users/resetPass">
-    <div><input type="submit" value="Forget your password?"></div>
+    <div><input type="submit" value="Forgot your password?"></div>
 </form>
