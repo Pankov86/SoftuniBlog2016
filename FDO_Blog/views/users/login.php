@@ -1,15 +1,32 @@
 <?php $this->title = 'Login'; ?>
 
 <h1><?= htmlspecialchars($this->title) ?></h1>
+<div class="container">
+    <form method="post" class="form-horizontal">
 
-<form method="post">
-    Username or Email:
-    <div><input type="text" name="username" required></div>
-    Password:
-    <div><input type="password" name="password" required></div>
-    <div><input type="submit" value="Login"></div>
-</form>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Username or E-mail:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="email" name="username"
+                       placeholder="Enter email or username" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Password:</label>
+            <div class="col-sm-4">
+                <input type="password" class="form-control" id="pwd" name="password"
+                       placeholder="Enter password" required>
+            </div>
+        </div>
 
-<form action="<?=APP_ROOT?>/users/resetPass">
-    <div><input type="submit" value="Forgot your password?"></div>
+            <div class="checkbox">
+                <label><input type="checkbox"> Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-default">Login</button>
+
+    </form>
+</div>
+
+<form class="form-horizontal">
+    <div><a href="<?=APP_ROOT?>/users/resetPass" class="text-info">Forgot your password?</a></div>
 </form>
