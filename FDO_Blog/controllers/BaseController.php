@@ -58,9 +58,7 @@ abstract class BaseController
             if ($includeLayout) {
                 include('views/_layout/header.php');
             }
-            if ($includeLayout) {
-                include ('views/_layout/aside.php');
-            }
+
             echo $htmlFromView;
             if ($includeLayout) {
                 include('views/_layout/footer.php');
