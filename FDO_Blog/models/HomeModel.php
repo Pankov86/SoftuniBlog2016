@@ -151,7 +151,6 @@ class HomeModel extends BaseModel
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
 
-    
     function getPostById(int $id)
     {
         $statement = self::$db->prepare(
@@ -161,7 +160,7 @@ class HomeModel extends BaseModel
         $statement->execute();
 
         $statement = self::$db->prepare(
-            "SELECT posts.id, title, content, date, full_name, points, date_edited ".
+            "SELECT posts.id, title, content, date, full_name, points ".
             "FROM posts LEFT JOIN users On posts.user_id = users.id ".
             "WHERE posts.id = ?");
         $statement->bind_param("i", $id);
