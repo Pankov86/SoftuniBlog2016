@@ -16,9 +16,17 @@ class AdminController extends BaseController
 
     public function deleteUserAction(int $id)
     {
-        $this->authorizeAdmin();
+
+    }
+
+    public function delete(int $id)
+    {
+        $this->user_id = $id;
+        $this->user_name = $this->model->getUserNameById($id);
+
         if ($this->isPost) {
             $result = $this->model->deleteUser($id);
+            $_SESSION['result'] = $result;
             if ($result) {
                 $this->addInfoMessage("User deleted.");
                 $this->redirect("admin", "index");
@@ -26,6 +34,5 @@ class AdminController extends BaseController
                 $this->addErrorMessage("Error: cannot delete user.");
             }
         }
-        
     }
 }

@@ -8,6 +8,7 @@
         <th>Username</th>
         <th>Email</th>
         <th>User group</th>
+        <th>Posts</th>
     </tr>
 
     <?php foreach ($this->users as $user) : ?>
@@ -18,6 +19,7 @@
             </td>
             <td><?=$user['email']?></td>
             <td><?=$user['group_name']?></td>
+            <td><a href="<?= APP_ROOT?>/"></a></td>
         </tr>
     <?php endforeach; ?>
 </table>

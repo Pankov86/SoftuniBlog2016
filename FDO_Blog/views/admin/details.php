@@ -4,7 +4,6 @@
 
 <?php $user_info = $this->user_info ?>
 
-<?php var_dump($_SESSION['delete']) ?>
 <ul>
     <li>Username: <?=$user_info['username']?></li>
     <li>Full name: <?=$user_info['full_name']?></li>
@@ -27,6 +26,4 @@
 <!--    </button>-->
 <!--</form>-->
 
-<form method="post">
-    <input type="submit" value="Delete user" onsubmit="<?$this->deleteUserAction($user_info['id'])?>">
-</form>
+<a href="<?=APP_ROOT?>/admin/delete/<?= $user_info['id']?>">Delete user</a>

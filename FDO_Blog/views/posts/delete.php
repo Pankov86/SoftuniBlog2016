@@ -2,6 +2,8 @@
 
 <h1><?=htmlspecialchars($this->title)?></h1>
 
+
+
 <form method="post">
     <div>Title:</div>
     <input type="text" name="post_title" disabled

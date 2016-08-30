@@ -1,6 +1,14 @@
 <?php
 class AdminModel extends BaseModel
 {
+    public function getUserNameById($id)
+    {
+        $statement = self::$db->query(
+            "SELECT users.username FROM users WHERE id = $id"
+        );
+        return $statement->fetch_assoc();
+    }
+
     public function getAllUsers() : array
     {
         $statement = self::$db->prepare(
@@ -49,7 +57,10 @@ class AdminModel extends BaseModel
         );
         $statement->bind_param("i", $id);
         $statement->execute();
-        return $statement->affected_rows == 1;
+
+        $result = $statement->affected_rows;
+        $_SESSION['af_rows'] = $result;
+        return $result;
     }
 
     public function deleteUserFromActivity(int $user_id)
@@ -59,6 +70,7 @@ class AdminModel extends BaseModel
         );
         $statement->bind_param("i", $user_id);
         $statement->execute();
+
     }
 
     public function deleteUserFromComments(int $user_id)
@@ -68,8 +80,6 @@ class AdminModel extends BaseModel
         );
         $statement->bind_param("i", $user_id);
         $statement->execute();
-
-        return $statement->num_rows;
     }
 
     public function deleteUserFromPostUserStatus(int $user_id)
@@ -86,7 +96,7 @@ class AdminModel extends BaseModel
         $statement = self::$db->prepare(
             "DELETE FROM u_g_interaction WHERE user_id = ?"
         );
-        $statement->bind_param("i", $id);
+        $statement->bind_param("i", $user_id);
         $statement->execute();
     }
 
@@ -97,15 +107,16 @@ class AdminModel extends BaseModel
 
         // Insert posts in table "deleted_posts"
         $this->insertDeletedPostsInDeletedTable($posts);
+
     }
 
     public function getUserPosts($user_id)
     {
         $statement = self::$db->prepare(
             "SELECT p.title, p.content, p.points, p.views_count, u.username, u.email ".
-            "FROM posts ".
-            "LEFT JOIN users ON posts.user_id = users.id ".
-            "WHERE posts.user_id = ?"
+            "FROM posts p ".
+            "LEFT JOIN users u ON p.user_id = u.id ".
+            "WHERE p.user_id = ?"
         );
         $statement->bind_param("i", $user_id);
         $statement->execute();
@@ -132,6 +143,7 @@ class AdminModel extends BaseModel
             );
             $statement->bind_param("ssiisss", $title, $content, $points, $views_count, $username, $email, $reason);
             $statement->execute();
+
         }
     }
 
