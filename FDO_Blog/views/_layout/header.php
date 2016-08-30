@@ -75,7 +75,7 @@
                             <li><a id="logged-in-info"><span>Hello,<a href="<?=APP_ROOT?>/users/profile">
                                     <b><?=htmlspecialchars($_SESSION['username'])?></b></a></span></li>
                             <li><form method="post" action="<?=APP_ROOT?>/users/logout">
-                                <input type="submit" value="Logout"/></form></li>
+                                    <button type="submit" value="Logout" class="btn">Logout</button></form></li>
                             </a>
                         <?php endif; ?>
                     </ul>
