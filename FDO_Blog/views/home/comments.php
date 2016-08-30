@@ -2,8 +2,8 @@
 //    if (isset($_SESSION['user_id'])){
          if ($this->comments): ?>
             <h3>Comments</h3>
-            <table style="width: 95%">
-                <tr>
+            <table style="width: 95%" class="table table-stripped">
+                <tr class="info">
                     <th>ID</th>
                     <th>User</th>
                     <th>Content</th>
