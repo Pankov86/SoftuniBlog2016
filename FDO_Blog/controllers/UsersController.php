@@ -2,6 +2,34 @@
 
 class UsersController extends BaseController
 {
+    public function resetPass()
+    {
+        if ($this->isPost){
+            if (!empty($_POST['email'])
+                && !empty($_POST['new_password'])
+                && !empty($_POST['confirm_password'])){
+
+                $email = $_POST['email'];
+                $new_password = $_POST['new_password'];
+                $confirm_password = $_POST['confirm_password'];
+
+                // Confirm email
+                $isRegistered = $this->model->checkEmail($email);
+
+                // Change password
+                $user_id = $this->model->getIdByEmail($email);
+                if ($isRegistered){
+                    $this->changePasswordWithoutLogin($user_id, $new_password, $confirm_password);
+                }
+            }
+        }
+    }
+
+    public function pass()
+    {
+
+    }
+
     public function edit()
     {
         $this->authorize();
@@ -33,7 +61,8 @@ class UsersController extends BaseController
         $newEmail = $oldInfo['email'];
         $newAboutMe = $oldInfo['About'];
 
-        if (!empty($_POST['newFullname'])|| !empty($_POST['newEmail'] || !empty($_POST['newAboutMe']))){
+
+        if (!empty($_POST['newFullname'])|| !empty($_POST['newEmail']) || !empty($_POST['newAboutMe'])){
 
             if (!empty($_POST['newFullname'])){
                 $newFullname = $_POST['newFullname'];
@@ -63,29 +92,65 @@ class UsersController extends BaseController
         }
     }
 
+    public function changePasswordWithoutLogin($user_id, $new_password, $confirm_password)
+    {
+            //confirm new password
+            if (strlen($new_password) <= 1){
+                $this->setValidationError("new_password", "Password too short.");
+            }
+            if ($new_password != $confirm_password){
+                $this->setValidationError("confirm_password", "Passwords do not match.");
+            }
+
+            if ($this->formValid()){
+                $result = $this->model->changePassword($user_id, $new_password);
+                if ($result){
+                    $this->addInfoMessage("Password changed.");
+                    $this->redirect("users", "login");
+                }
+            }
+        }
+
+
     public function changePassword()
     {
         $id = $_SESSION['user_id'];
 
-        if (isset($_POST['newPassword']) && isset($_POST['confirmPassword']) && isset($_POST['oldPassword'])){
-            $old_password = $_POST['oldPassword'];
-            $new_password = $_POST['newPassword'];
-            $confirm_password = $_POST['confirmPassword'];
+//        if (empty($_POST['new_password']) &&
+//            empty($_POST['confirm_password']) &&
+//            empty($_POST['old_password'])){
+//            $this->addInfoMessage("Enter values to change the password.");
+//        }
+
+        if (!empty($_POST['new_password']) &&
+            !empty($_POST['confirm_password']) &&
+            !empty($_POST['old_password']))  {
+            $old_password = $_POST['old_password'];
+            $new_password = $_POST['new_password'];
+            $confirm_password = $_POST['confirm_password'];
 
             //confirm old password
             $isOldPasswordValid = $this->model->isOldPasswordValid($id, $old_password);
+            $_SESSION['isvalid'] = $isOldPasswordValid;
             if (!$isOldPasswordValid){
-                $this->setValidationError("password", "Wrong password.");
+                $this->setValidationError("old_password", "Wrong password.");
+                $this->addInfoMessage("Wrong password!");
             }
 
             //confirm new password
             if (strlen($new_password) <= 1){
-                $this->setValidationError("password", "Password too short.");
-                return;
+                $this->setValidationError("new_password", "Password too short.");
             }
             if ($new_password != $confirm_password){
                 $this->setValidationError("confirm_password", "Passwords do not match.");
-                return;
+            }
+
+            if ($this->formValid()){
+                $result = $this->model->changePassword($id, $new_password);
+                if ($result){
+                    $this->addInfoMessage("Password changed.");
+                    $this->redirect("users", "profile");
+                }
             }
         }
     }
@@ -139,6 +204,7 @@ class UsersController extends BaseController
             $confirm_password = $_POST['confirm_password'];
             $full_name = $_POST['full_name'];
             $email = $_POST['email'];
+            $about = $_POST['About'];
 
             if (strlen($username) <= 1){
                 $this->setValidationError("username", "Username too short.");
@@ -154,23 +220,27 @@ class UsersController extends BaseController
             }
 
             if ($this->validateEmail($email, 'email')){
-                $result = $this->model->checkUniqueUserAndMail($username, $email);
-                if ($result == 0){
+                $checkUniqueUsername = $this->model->checkUniqueUsername($username);
+                $checkUniqueEmail = $this->model->checkUniqueEmail($email);
+
+                $_SESSION['unique_email'] = $checkUniqueEmail;
+
+                if ($checkUniqueUsername == 0 && $checkUniqueEmail == 0){
                     $userId = $this->model->register(
-                        $username, $password, $full_name, $email);
+                        $username, $password, $full_name, $email, $about);
                     if ($userId){
                         //Find id of group 'user'
                         $group = 'user';
                         $group_id = $this->model->getGroupIdByGroupName($group);
+
                         //Insert user_id and group_id in u_g_interaction table
                         $resultUGI = $this->model->fillUGInteraction($userId, $group_id);
-
 
                         //Insert new user in table 'activity'
                         $resultUA = $this->model->createNewUserActivity($userId);
 
                         if ($resultUGI && $resultUA ){
-                            $_SESSION['group_id'] = $group_id;
+                            $_SESSION['group_name'] = 'user';
                             $_SESSION['username'] = $username;
                             $_SESSION['user_id'] = $userId;
                             $this->addInfoMessage("Registration successful.");
@@ -184,9 +254,15 @@ class UsersController extends BaseController
                         $this->addErrorMessage("Error: Registration failed.");
                     }
                 }
-                else{
-                    $this->addErrorMessage("Error: Username or email already exists.");
+                else if ($checkUniqueUsername != 0 && $checkUniqueEmail == 0){
+                    $this->addErrorMessage("Error: Username already taken.");
                 }
+                else if ($checkUniqueUsername == 0 && $checkUniqueEmail != 0){
+                    $this->addErrorMessage("Error: Email already registered.");
+                }
+            }
+            else{
+                $this->addErrorMessage("Error: Registration failed. Invalid email address.");
             }
 
         }
@@ -205,7 +281,7 @@ class UsersController extends BaseController
                 $user_group = $this->model->getGroupById($userId);
                 $_SESSION['username'] = $username;
                 $_SESSION['user_id'] = $userId;
-                $_SESSION['user_group'] = $user_group;
+                $_SESSION['group_name'] = $user_group;
                 
                 $this->addInfoMessage("Login successful.");
                 $this->redirect('');
@@ -227,9 +303,7 @@ class UsersController extends BaseController
         $this->authorize();
 
         $id = $_SESSION['user_id'];
-        $this->user_info = $this->model->getUserInfo($id); 
-//        $this->user_group = $this->model->getGroupById($id);
-//        $this->user_activity = $this->model->getActivity($id);
+        $this->user_info = $this->model->getUserInfo($id);
     }
 
 
