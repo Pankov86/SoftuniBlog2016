@@ -87,4 +87,7 @@
         </nav>
 
     </header>
+    <div class="container">
+        <div class="row">
+        </div>
 <?php require_once('show-notify-messages.php'); ?>
