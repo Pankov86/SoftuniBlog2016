@@ -107,41 +107,41 @@ class PostsModel extends HomeModel
 
     public function delete($id) :bool
     {
-        //delete comments from this post
-        $statement = self::$db->prepare(
-        "DELETE FROM comments WHERE post_id = ?"
-    );
-        $statement->bind_param("i", $id);
-        $statement->execute();
-
-        // Delete from category_post_interaction
-        $statement = self::$db->prepare(
-            "DELETE FROM category_post_interaction WHERE post_id = ?"
-        );
-        $statement->bind_param("i", $id);
-        $statement->execute();
-
-        // Delete from post_tag_interaction
-        $statement = self::$db->prepare(
-            "DELETE FROM post_tag_interaction WHERE post_id = ?"
-        );
-        $statement->bind_param("i", $id);
-        $statement->execute();
-
-        // Delete from post_user_status
-        $statement = self::$db->prepare(
-            "DELETE FROM post_user_status WHERE post_id = ?"
-        );
-        $statement->bind_param("i", $id);
-        $statement->execute();
-
-        $user_id = $_SESSION['user_id'];
-        $statement = self::$db->prepare
-        ("UPDATE activity ".
-            "SET posts_count = posts_count - 1 ".
-            "WHERE user_id = ?");
-        $statement->bind_param("i", $user_id);
-        $statement->execute();
+//        //delete comments from this post
+//        $statement = self::$db->prepare(
+//        "DELETE FROM comments WHERE post_id = ?"
+//    );
+//        $statement->bind_param("i", $id);
+//        $statement->execute();
+//
+//        // Delete from category_post_interaction
+//        $statement = self::$db->prepare(
+//            "DELETE FROM category_post_interaction WHERE post_id = ?"
+//        );
+//        $statement->bind_param("i", $id);
+//        $statement->execute();
+//
+//        // Delete from post_tag_interaction
+//        $statement = self::$db->prepare(
+//            "DELETE FROM post_tag_interaction WHERE post_id = ?"
+//        );
+//        $statement->bind_param("i", $id);
+//        $statement->execute();
+//
+//        // Delete from post_user_status
+//        $statement = self::$db->prepare(
+//            "DELETE FROM post_user_status WHERE post_id = ?"
+//        );
+//        $statement->bind_param("i", $id);
+//        $statement->execute();
+//
+//        $user_id = $_SESSION['user_id'];
+//        $statement = self::$db->prepare
+//        ("UPDATE activity ".
+//            "SET posts_count = posts_count - 1 ".
+//            "WHERE user_id = ?");
+//        $statement->bind_param("i", $user_id);
+//        $statement->execute();
 
         //delete post
         $statement = self::$db->prepare(

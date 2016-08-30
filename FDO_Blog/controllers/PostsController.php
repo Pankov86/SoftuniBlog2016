@@ -52,7 +52,7 @@ class PostsController extends BaseController
                 $userId = $_SESSION['user_id'];
                 if ($this->model->create($title, $content, $userId, $category_id, $tag_id['id'])){
                     $this->addInfoMessage("Post created.");
-                    $this->redirect("posts");
+                    $this->redirect("posts", "user_posts");
                 }
                 else{
                     $this->addErrorMessage("Error: cannot create post.");
@@ -70,7 +70,7 @@ class PostsController extends BaseController
             else{
                 $this->addErrorMessage("Error: cannot delete post.");
             }
-            $this->redirect("posts");
+            $this->redirect("posts", "user_posts");
         }
         else{
             $post = $this->model->getById($id);
@@ -102,18 +102,17 @@ class PostsController extends BaseController
             if ($this->formValid()){
                 if ($this->model->edit($id, $title, $content, $date_edited, $user_id)){
                     $this->addInfoMessage("Post edited.");
-                    $this->redirect("posts");
+                    $this->redirect("posts", "user_posts");
                 }
                 else{
                     $this->addErrorMessage("Error: cannot edit post.");
                 }
-                $this->redirect('posts');
             }
         }
         $post = $this->model->getById($id);
         if (!$post){
             $this->addErrorMessage("Post does not exist.");
-            $this->redirect("posts");
+            $this->redirect("posts", "user_posts");
         }
         $this->post = $post;
     }

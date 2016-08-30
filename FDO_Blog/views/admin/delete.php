@@ -1,5 +1,3 @@
-<?php var_dump($_SESSION['af_rows'])?>
-<?php var_dump($_SESSION['id'])?>
 
 <h4>Are you sure you want to delete user <?= $this->user_name['username'] ?>?</h4>
 <p>Information for this user will be saved.</p>
