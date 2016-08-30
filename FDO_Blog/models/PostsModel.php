@@ -2,8 +2,6 @@
 
 class PostsModel extends HomeModel
 {
-
-
     function getTags()
     {
         $statement = self::$db->query(
@@ -47,7 +45,7 @@ class PostsModel extends HomeModel
             "SELECT posts.id, title, content, date, full_name, user_id " .
             "FROM posts " .
             "LEFT JOIN users " .
-            "On posts.user_id = users.id " .
+            "ON posts.user_id = users.id " .
             "WHERE posts.user_id = $user_id " .
             "ORDER BY date DESC");
         return $statement->fetch_all(MYSQLI_ASSOC);
@@ -60,7 +58,7 @@ class PostsModel extends HomeModel
             "   (SELECT count(*) FROM comments c WHERE c.post_id = posts.id) comments_count " .
             "FROM posts " .
             "LEFT JOIN users " .
-            "On posts.user_id = users.id " .
+            "ON posts.user_id = users.id " .
             "ORDER BY date DESC");
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
@@ -82,6 +80,13 @@ class PostsModel extends HomeModel
         );
         $statementPost->bind_param("ssi", $title, $content, $user_id);
         $statementPost->execute();
+
+        $statement = self::$db->prepare
+        ("UPDATE activity ".
+            "SET posts_count = posts_count + 1 ".
+            "WHERE user_id = ?");
+        $statement->bind_param("i", $user_id);
+        $statement->execute();
 
         $post_id = $statementPost->insert_id;
 
@@ -128,6 +133,14 @@ class PostsModel extends HomeModel
             "DELETE FROM post_user_status WHERE post_id = ?"
         );
         $statement->bind_param("i", $id);
+        $statement->execute();
+
+        $user_id = $_SESSION['user_id'];
+        $statement = self::$db->prepare
+        ("UPDATE activity ".
+            "SET posts_count = posts_count - 1 ".
+            "WHERE user_id = ?");
+        $statement->bind_param("i", $user_id);
         $statement->execute();
 
         //delete post

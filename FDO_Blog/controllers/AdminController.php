@@ -1,7 +1,6 @@
 <?php
 class AdminController extends BaseController
 {
-
     public function index()
     {
         $this->authorizeAdmin();
@@ -12,19 +11,17 @@ class AdminController extends BaseController
     {
         $this->authorizeAdmin();
         $id = intval($id);
-        $_SESSION['id'] = $id;
         $this->user_info = $this->model->getUserInfo($id);
     }
 
-    public function deleteUserAction($id)
+    public function deleteUserAction(int $id)
     {
-
+        $this->authorizeAdmin();
         if ($this->isPost) {
-            $this->authorizeAdmin();
-            $id = intval($id);
-            $this->model->deleteUser($id);
-            if ($this->model->deleteUser($id)) {
+            $result = $this->model->deleteUser($id);
+            if ($result) {
                 $this->addInfoMessage("User deleted.");
+                $this->redirect("admin", "index");
             } else {
                 $this->addErrorMessage("Error: cannot delete user.");
             }

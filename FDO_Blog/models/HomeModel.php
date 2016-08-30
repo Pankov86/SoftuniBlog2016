@@ -2,13 +2,19 @@
 
 class HomeModel extends BaseModel
 {
-
     function vote(int $post_id, int $user_id){
         $statement = self::$db->prepare
         ("UPDATE posts ".
             "SET points = points + 1 ".
             "WHERE id = ?");
         $statement->bind_param("i", $post_id);
+        $statement->execute();
+
+        $statement = self::$db->prepare
+        ("UPDATE activity ".
+            "SET points_given_by_user = points_given_by_user + 1 ".
+            "WHERE user_id = ?");
+        $statement->bind_param("i", $user_id);
         $statement->execute();
 
         $statement = self::$db->prepare(
@@ -21,6 +27,13 @@ class HomeModel extends BaseModel
     }
 
     function unVote(int $post_id, int $user_id){
+        $statement = self::$db->prepare
+        ("UPDATE activity ".
+            "SET points_given_by_user = points_given_by_user - 1 ".
+            "WHERE user_id = ?");
+        $statement->bind_param("i", $user_id);
+        $statement->execute();
+
         $statement = self::$db->prepare
         ("UPDATE posts ".
             "SET points = points - 1 ".
@@ -63,6 +76,13 @@ class HomeModel extends BaseModel
 
     function createComment($id, $user_id, $content)
     {
+        $statement = self::$db->prepare
+        ("UPDATE activity ".
+            "SET comments_count = comments_count + 1 ".
+            "WHERE user_id = ?");
+        $statement->bind_param("i", $user_id);
+        $statement->execute();
+
         $statement = self::$db->prepare(
             "INSERT INTO comments (post_id, author_id, comment_body )".
             "VALUES (?, ?, ?)");
@@ -81,6 +101,13 @@ class HomeModel extends BaseModel
 
     public function deleteComment($id) :bool
     {
+        $statement = self::$db->prepare
+        ("UPDATE activity ".
+            "SET comments_count = comments_count - 1 ".
+            "WHERE user_id = ?");
+        $statement->bind_param("i", $user_id);
+        $statement->execute();
+
         //delete comment
         $statement = self::$db->prepare(
             "DELETE FROM comments WHERE id = ?"
@@ -108,7 +135,8 @@ class HomeModel extends BaseModel
             "SELECT *".
             "FROM posts LEFT JOIN category_post_interaction ".
             "ON posts.id = category_post_interaction.post_id ".
-            "JOIN users ".
+            "LEFT JOIN users ".
+            "LEFT JOIN users ".
             "ON posts.user_id = users.id ".
             "WHERE category_id = $id ".
             "ORDER BY posts.id");
@@ -151,8 +179,6 @@ class HomeModel extends BaseModel
             ."LEFT JOIN users u ON c.author_id = u.id "
             ."WHERE c.post_id = $id");
 
-
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
-
 }

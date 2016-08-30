@@ -14,8 +14,7 @@
         <tr>
             <td><?= $user['id']?></td>
             <td>
-                <a href="<?= APP_ROOT ?>/admin/details/<?= $user['id']?>"><?=$user['username']?>
-                </a>
+                <a href="<?= APP_ROOT ?>/admin/details/<?=$user['id']?>"><?=$user['username']?></a>
             </td>
             <td><?=$user['email']?></td>
             <td><?=$user['group_name']?></td>
