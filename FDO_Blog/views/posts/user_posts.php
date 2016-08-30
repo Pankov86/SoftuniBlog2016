@@ -1,5 +1,5 @@
 <main>
-    <table>
+    <table class="table table-stripped">
         <tr>
             <th>Title</th>
             <th>Content</th>
