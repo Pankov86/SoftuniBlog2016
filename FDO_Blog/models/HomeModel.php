@@ -132,10 +132,9 @@ class HomeModel extends BaseModel
     function getPostsByCategory(int $id)
     {
         $statement = self::$db->query(
-            "SELECT *".
+            "SELECT * ".
             "FROM posts LEFT JOIN category_post_interaction ".
             "ON posts.id = category_post_interaction.post_id ".
-            "LEFT JOIN users ".
             "LEFT JOIN users ".
             "ON posts.user_id = users.id ".
             "WHERE category_id = $id ".
