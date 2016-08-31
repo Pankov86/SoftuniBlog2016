@@ -1,6 +1,6 @@
 <?php $this->title = 'Welcome to My Blog'; ?>
 
-<h1><?=htmlspecialchars($this->title)?></h1>
+<legend><h1><?=htmlspecialchars($this->title)?></h1></legend>
 
 <main>
     <?php foreach ($this->posts as $post) : ?>
