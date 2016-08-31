@@ -1,6 +1,7 @@
 <?php $this->title = "User info"; ?>
 
-<h1><?= htmlspecialchars($this->title)?></h1>
+<legend><h1><?=htmlspecialchars($this->title)?></h1></legend>
+
 
 <?php $user_info = $this->user_info ?>
 
