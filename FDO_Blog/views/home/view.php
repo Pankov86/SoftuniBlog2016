@@ -6,7 +6,7 @@
         <i>Posted on</i>
         <?= htmlentities($this->post['date']); ?>
         <i>by</i>
-        <?= htmlentities($this->post['full_name']); ?>
+        <a href="<?=APP_ROOT?>/users/profile/<?=$post['user_id']?>"><?= htmlentities($this->post['full_name']); ?></a>
 
         <?php if ($this->post['date_edited'] != '0000-00-00 00:00:00') :?>
             <i> // Last edit: </i>
