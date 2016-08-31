@@ -1,8 +1,7 @@
 <?php $this->title = "All users"; ?>
+<legend><h1><?=htmlspecialchars($this->title)?></h1></legend>
 
-<h1><?= htmlspecialchars($this->title)?></h1>
-
-<table>
+<table class="table">
     <tr>
         <th>ID</th>
         <th>Username</th>
