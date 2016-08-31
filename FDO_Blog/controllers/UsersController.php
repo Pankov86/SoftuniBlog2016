@@ -14,15 +14,20 @@ class UsersController extends BaseController
                 $confirm_password = $_POST['confirm_password'];
 
                 // Confirm email
-                $isRegistered = $this->model->checkEmail($email);
+                if ($this->validateEmail($email, 'email')){
+                    $isRegistered = $this->model->checkEmail($email);
 
-                // Change password
-                $user_id = $this->model->getIdByEmail($email);
-                if ($isRegistered){
+                    // Change password
+                    $user_id = $this->model->getIdByEmail($email);
+                    if ($isRegistered){
                         $this->changePasswordWithoutLogin($user_id, $new_password, $confirm_password);
+                    }
+                    else{
+                        $this->addErrorMessage("This email is not registered.");
+                    }
                 }
-                else{
-                    $this->addErrorMessage("This email is not registered.");
+                else {
+                    $this->addErrorMessage("Invalid email.");
                 }
             }
         }
@@ -311,7 +316,7 @@ class UsersController extends BaseController
 
     public function profile($id = 0)
     {
-        //$this->authorize();
+        $this->authorize();
         if (!$id){
             $id = $_SESSION['user_id'];
         }
