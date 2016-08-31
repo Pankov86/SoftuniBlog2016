@@ -1,9 +1,11 @@
 <?php $this->title = 'Delete Comment'; ?>
 
+<legend><h1><?=htmlspecialchars($this->title)?></h1></legend>
 
-<h1><?=htmlspecialchars($this->title)?></h1>
 
-<form method="post">
-    <div><input type="submit" value="Delete Comment">
-        <a href="<?=APP_ROOT?>/posts/">[Cancel]</a></div>
-</form>
+<div class="form-group">
+    <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default"><a href="<?=APP_ROOT?>/posts">Cancel</a></button>
+        <button type="submit" class="btn btn-primary">Delete comment</button>
+    </div>
+</div>
