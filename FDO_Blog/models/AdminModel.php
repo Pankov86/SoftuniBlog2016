@@ -212,4 +212,40 @@ class AdminModel extends BaseModel
 //        $statement->bind_param("i", $user_id);
 //        $statement->execute();
 //    }
+
+    public function getDeletedPosts()
+    {
+        $statement = self::$db->query(
+            "SELECT * FROM deleted_posts"
+        );
+        return $statement->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getDeletedPostByID($id)
+    {
+        $statement = self::$db->query(
+            "SELECT * FROM deleted_posts WHERE post_id = $id"
+        );
+        return $statement->fetch_assoc();
+    }
+
+    public function restorePost(int $id, string $title, string $content, int $user_id)
+    {
+        $statement = self::$db->prepare(
+            "DELETE FROM deleted_posts ".
+            "WHERE post_id = ?"
+        );
+        $statement->bind_param("i", $id);
+        $statement->execute();
+
+        $statement = self::$db->prepare(
+            "INSERT INTO posts ".
+            "(id, title,content, user_id) ".
+            "VALUES (?, ?, ?, ?)"
+        );
+        $statement->bind_param("issi", $id, $title, $content, $user_id);
+        $statement->execute();
+
+        return $statement->affected_rows;
+    }
 }

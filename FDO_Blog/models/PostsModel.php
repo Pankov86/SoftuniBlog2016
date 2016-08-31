@@ -107,6 +107,28 @@ class PostsModel extends HomeModel
 
     public function delete($id) :bool
     {
+        $statement = self::$db->query(
+            "SELECT * FROM posts ".
+            "LEFT JOIN users ".
+            "ON posts.user_id = users.id ".
+            "WHERE posts.id = $id"
+        );
+        $result = $statement->fetch_assoc();
+
+        $title = $result['title'];
+        $content = $result['content'];
+        $post_id = $id;
+        $username = $result['username'];
+        $user_id = $result['user_id'];
+
+        $statement = self::$db->prepare(
+            "INSERT INTO deleted_posts ".
+            "(title, content, post_id, username, user_id) ".
+            "VALUES (?, ?, ?, ?, ?)"
+        );
+        $statement->bind_param("ssisi", $title, $content, $post_id, $username, $user_id);
+        $statement->execute();
+
 //        //delete comments from this post
 //        $statement = self::$db->prepare(
 //        "DELETE FROM comments WHERE post_id = ?"

@@ -30,4 +30,34 @@ class AdminController extends BaseController
             }
         }
     }
+
+    public function deleted_posts()
+    {
+        $this->posts = $this->model->getDeletedPosts();
+    }
+
+    public function restore($post_id)
+    {
+        $post_id = intval($post_id);
+        $post =  $this->model->getDeletedPostByID($post_id);
+        $this->post = $post;
+
+        if ($this->isPost){
+            $id = $post_id;
+            $title = $post['title'];
+            $content = $post['content'];
+            $user_id = $post['user_id'];
+
+            $result = $this->model->restorePost($id, $title, $content, $user_id);
+
+            if ($result){
+                $this->addInfoMessage("Post successfully restored.");
+                $this->redirect("posts");
+            }
+            else{
+                $this->addErrorMessage("Cannot restore post.");
+            }
+
+        }
+    }
 }

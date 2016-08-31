@@ -59,6 +59,7 @@
                             <li><a href="<?=APP_ROOT?>/posts">Posts</a></li>
                             <li><a href="<?=APP_ROOT?>/admin">Users</a></li>
                             <li><a href="<?=APP_ROOT?>/posts/create">Create Post</a></li>
+                            <li><a href="<?=APP_ROOT?>/admin/deleted_posts">Deleted Posts</a></li>
 
                         <?php elseif ($this->isLoggedIn) : ?>
                             <li><a href="<?=APP_ROOT?>/posts/index">All Posts</a></li>

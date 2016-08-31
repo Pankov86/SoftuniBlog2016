@@ -1,5 +1,3 @@
-<?php $this->title = 'Welcome to My Blog'; ?>
-
 <legend><h1><?=htmlspecialchars($this->title)?></h1></legend>
 
 <main>
@@ -14,8 +12,6 @@
             <a href="<?=APP_ROOT?>/users/profile/<?=$post['user_id']?>"><?= htmlspecialchars($post['full_name'])?></a>
         </p>
 
-       
-        
         <p><?= $post['content']; ?></p>
     <?php endforeach; ?>
 </main>
