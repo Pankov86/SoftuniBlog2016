@@ -1,6 +1,6 @@
 <main>
-    <table>
-        <tr>
+    <table class="table table-responsive">
+        <tr >
             <th>Title</th>
             <th>Content</th>
             <th>Author</th>
