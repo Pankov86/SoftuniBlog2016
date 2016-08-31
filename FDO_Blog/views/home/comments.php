@@ -4,7 +4,6 @@
             <h3>Comments</h3>
             <table style="width: 95%" class="table table-stripped">
                 <tr class="info">
-                    <th>ID</th>
                     <th>User</th>
                     <th>Content</th>
                     <th>Posted on</th>
@@ -33,6 +32,6 @@
         <?php else : ?>
             <h3>No comments yet</h3>
         <?php endif; ?>
-<?php
-//    }
-//?>
+
+
+

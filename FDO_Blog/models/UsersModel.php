@@ -99,7 +99,7 @@ class UsersModel extends BaseModel
     public function getUserInfo($id)
     {
         $statement = self::$db->prepare(
-        "SELECT u.username, g.group_name, u.full_name, u.email, u.About, a.comments_count, a.posts_count, a.points_given_by_user "
+        "SELECT u.id, u.username, g.group_name, u.full_name, u.email, u.About, a.comments_count, a.posts_count, a.points_given_by_user "
         ."FROM users u "
         ."LEFT JOIN u_g_interaction ugi on ugi.user_id = u.id "
         ."LEFT JOIN groups g on ugi.group_id = g.id "

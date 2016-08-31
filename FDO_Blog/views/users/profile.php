@@ -16,11 +16,14 @@
         <li>About me: <?=$user_info['About']?></li>
     </ul>
 
-<form method="post" action="<?=APP_ROOT?>/users/edit">
-    <button type="submit">Edit profile</button>
-</form>
 
-<form method="post" action="<?=APP_ROOT?>/users/pass">
-    <button type="submit">Edit password</button>
-</form>
+<?php if ($user_info['id'] == $_SESSION['user_id']) : ?>
+    <form method="post" action="<?=APP_ROOT?>/users/edit">
+        <button type="submit">Edit profile</button>
+    </form>
+
+    <form method="post" action="<?=APP_ROOT?>/users/pass">
+        <button type="submit">Edit password</button>
+    </form>
+<?php endif; ?>
 
