@@ -27,3 +27,7 @@
     </form>
 <?php endif; ?>
 
+<?php if ($_SESSION['group_name'] == 'admin') : ?>
+    <a href="<?=APP_ROOT?>/admin/delete/<?= $user_info['id']?>">Delete user</a>
+<?php endif; ?>
+

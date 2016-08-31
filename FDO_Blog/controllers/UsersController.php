@@ -33,10 +33,7 @@ class UsersController extends BaseController
         }
     }
 
-    public function pass()
-    {
-
-    }
+    public function pass(){}
 
     public function edit()
     {
