@@ -10,7 +10,7 @@
             <i>Posted on</i>
             <?= htmlentities($post['date']); ?>
             <i>by</i>
-            <?= htmlentities($post['full_name']); ?>
+        <a href="<?=APP_ROOT?>/users/profile/<?=$post['user_id']?>"><?= htmlspecialchars($post['full_name'])?></a>
         </p>
         <p><?= $post['content']; ?></p>
     <?php endforeach; ?>
