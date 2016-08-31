@@ -24,7 +24,9 @@ CREATE TABLE IF NOT EXISTS `activity` (
   `comments_count` int(11) DEFAULT NULL,
   `posts_count` int(11) DEFAULT NULL,
   `points_given_by_user` int(11) DEFAULT NULL,
-  `Activitycol` varchar(45) DEFAULT NULL
+  `Activitycol` varchar(45) DEFAULT NULL,
+  KEY `FK_activity_user` (`user_id`),
+  CONSTRAINT `FK_activity_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dumping data for table fdo_blog.activity: ~8 rows (approximately)
@@ -69,8 +71,8 @@ CREATE TABLE IF NOT EXISTS `category_post_interaction` (
   `category_id` int(11) NOT NULL,
   PRIMARY KEY (`post_id`,`category_id`),
   KEY `FK__category` (`category_id`),
-  CONSTRAINT `FK__category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
-  CONSTRAINT `FK__posts` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`)
+  CONSTRAINT `FK__category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK__posts` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dumping data for table fdo_blog.category_post_interaction: ~9 rows (approximately)
@@ -84,7 +86,9 @@ INSERT INTO `category_post_interaction` (`post_id`, `category_id`) VALUES
 	(6, 2),
 	(9, 5),
 	(10, 1),
-	(11, 4);
+	(11, 4),
+	(13, 4),
+	(14, 4);
 /*!40000 ALTER TABLE `category_post_interaction` ENABLE KEYS */;
 
 
@@ -96,7 +100,11 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `author_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `FK_comment_user_id` (`author_id`),
+  KEY `FK_comment_post_id` (`post_id`),
+  CONSTRAINT `FK_comment_post_id` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_comment_user_id` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table fdo_blog.comments: ~7 rows (approximately)
@@ -141,8 +149,8 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `date_edited` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `fk_users_posts_idx` (`user_id`),
-  CONSTRAINT `fk_users_posts` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_users_posts` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table fdo_blog.posts: ~10 rows (approximately)
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
@@ -156,7 +164,9 @@ INSERT INTO `posts` (`id`, `title`, `content`, `date`, `user_id`, `views_count`,
 	(9, 'Best title', 'How to write the best titles!', '2016-08-23 15:26:30', 1, 0, 0, '0000-00-00 00:00:00'),
 	(10, 'Build the best websites', 'Best websites eva!', '2016-08-23 15:27:39', 10, 9, 0, '0000-00-00 00:00:00'),
 	(11, 'Sleep is for the weak', 'jhgjvykbhnjkm fghjkl;kjhg', '2016-08-29 15:47:32', 9, 6, 1, '2016-08-31 12:23:28'),
-	(12, 'New post from Ralka', 'gbjkl;kjhgfhjbkl;\'', '2016-08-31 13:24:04', 9, 0, 0, '2016-08-31 13:24:04');
+	(12, 'New post from Ralka', 'gbjkl;kjhgfhjbkl;\'', '2016-08-31 13:24:04', 9, 0, 0, '2016-08-31 13:24:04'),
+	(13, 'New post from Ralka', 'gbjkl;kjhgfhjbkl;\'', '2016-08-31 13:28:47', 9, 0, 0, '2016-08-31 13:28:47'),
+	(14, 'New Title', 'dfghop\';ljhgvhbjnkml oiuytgkhbjkl;\'lkjhgf hjkl;\'lkjhgfhb ho;\'lkjhg ', '2016-08-31 13:29:06', 9, 0, 0, '2016-08-31 12:29:16');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 
 
@@ -167,17 +177,19 @@ CREATE TABLE IF NOT EXISTS `post_tag_interaction` (
   `tag_id` int(11) NOT NULL,
   PRIMARY KEY (`post_id`,`tag_id`),
   KEY `FK__tags` (`tag_id`),
-  CONSTRAINT `FK__posts_tags` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
-  CONSTRAINT `FK__tags` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`)
+  CONSTRAINT `FK__posts_tags` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK__tags` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table fdo_blog.post_tag_interaction: ~4 rows (approximately)
+-- Dumping data for table fdo_blog.post_tag_interaction: ~6 rows (approximately)
 /*!40000 ALTER TABLE `post_tag_interaction` DISABLE KEYS */;
 INSERT INTO `post_tag_interaction` (`post_id`, `tag_id`) VALUES
 	(1, 5),
 	(2, 3),
 	(3, 4),
-	(11, 5);
+	(11, 5),
+	(13, 6),
+	(14, 6);
 /*!40000 ALTER TABLE `post_tag_interaction` ENABLE KEYS */;
 
 
@@ -188,11 +200,11 @@ CREATE TABLE IF NOT EXISTS `post_user_status` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`post_id`,`user_id`),
   KEY `FK__users_status` (`user_id`),
-  CONSTRAINT `FK__posts_status` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
-  CONSTRAINT `FK__users_status` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  CONSTRAINT `FK__posts_status` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK__users_status` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table fdo_blog.post_user_status: ~1 rows (approximately)
+-- Dumping data for table fdo_blog.post_user_status: ~0 rows (approximately)
 /*!40000 ALTER TABLE `post_user_status` DISABLE KEYS */;
 INSERT INTO `post_user_status` (`post_id`, `user_id`) VALUES
 	(5, 9),
@@ -257,8 +269,8 @@ CREATE TABLE IF NOT EXISTS `u_g_interaction` (
   `group_id` int(11) NOT NULL,
   PRIMARY KEY (`user_id`,`group_id`),
   KEY `FK_u_g_interaction_groups` (`group_id`),
-  CONSTRAINT `FK_u_g_interaction_groups` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`),
-  CONSTRAINT `FK_u_g_interaction_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  CONSTRAINT `FK_u_g_interaction_groups` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_u_g_interaction_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dumping data for table fdo_blog.u_g_interaction: ~10 rows (approximately)
