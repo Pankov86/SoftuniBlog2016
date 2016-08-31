@@ -206,11 +206,11 @@ class UsersController extends BaseController
             $email = $_POST['email'];
             $about = $_POST['About'];
 
-            if (strlen($username) <= 1){
+            if (strlen($username) <= 2){
                 $this->setValidationError("username", "Username too short.");
                 return;
             }
-            if (strlen($password) <= 1){
+            if (strlen($password) <= 2){
                 $this->setValidationError("password", "Password too short.");
                 return;
             }
@@ -254,10 +254,15 @@ class UsersController extends BaseController
                         $this->addErrorMessage("Error: Registration failed.");
                     }
                 }
-                else if ($checkUniqueUsername != 0 && $checkUniqueEmail == 0){
+                else if($checkUniqueEmail != 0 && $checkUniqueUsername != 0)
+                {
+                    $this->addErrorMessage("Error: Email already registered.");
                     $this->addErrorMessage("Error: Username already taken.");
                 }
-                else if ($checkUniqueUsername == 0 && $checkUniqueEmail != 0){
+                else if ($checkUniqueUsername != 0){
+                    $this->addErrorMessage("Error: Username already taken.");
+                }
+                else if ($checkUniqueEmail != 0){
                     $this->addErrorMessage("Error: Email already registered.");
                 }
             }
