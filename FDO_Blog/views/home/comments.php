@@ -21,7 +21,8 @@
                         <td><?= htmlspecialchars($comment['comment_body'])?></td>
                         <td><?= htmlspecialchars($comment['date'])?></td>
 
-                        <?php if (isset($_SESSION['user_id]']) && $_SESSION['user_id'] == $comment['author_id']) : ?>
+                        <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $comment['author_id']) : ?>
+
                             <td>
                                 <a href="<?=APP_ROOT?>/home/deleteComment/<?=$comment['id']?>">[Delete]</a>
                             </td>

@@ -14,7 +14,7 @@
             <a href="<?=APP_ROOT?>/users/profile/<?=$post['user_id']?>"><?= htmlspecialchars($post['full_name'])?></a>
         </p>
 
-        <?php var_dump($post['user_id'])?>
+       
         
         <p><?= $post['content']; ?></p>
     <?php endforeach; ?>
