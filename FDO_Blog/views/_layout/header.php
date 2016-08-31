@@ -2,6 +2,7 @@
 <html>
 
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet"  href="<?=APP_ROOT?>/content/styles/styles.css" type="text/css"/>
         <link rel="icon" href="<?=APP_ROOT?>/content/images/favicon.ico" />
         <script src="<?=APP_ROOT?>/content/scripts/jquery-3.0.0.min.js"></script>
@@ -62,22 +63,30 @@
                             <li><a href="<?=APP_ROOT?>/posts/index">All Posts</a></li>
                             <li><a href="<?=APP_ROOT?>/posts/user_posts">User Posts</a></li>
                             <li> <a href="<?=APP_ROOT?>/posts/create">Create Post</a></li>
+                        <?php endif; ?>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <?php if ($this->isLoggedIn) : ?>
+                            <li><a>Hello,</a></li>
+                            <li>
+                                <a id="logged-in-info" href="<?=APP_ROOT?>/users/profile"/>
+                                <b><?=htmlspecialchars($_SESSION['username'])?></b></a>
+                            </li>
+                            <li>
+                                    <a type="submit"
+                                       href="<?=APP_ROOT?>/users/logout" class="btn btn-default btn-size-xs">Logout</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
 
                         <?php else: ?>
-                            <li><a href="<?=APP_ROOT?>/users/login">Login</a></li>
-                            <li><a href="<?=APP_ROOT?>/users/register">Register</a></li>
-
+                            <li><a href="<?=APP_ROOT?>/users/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                            <li><a href="<?=APP_ROOT?>/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        </ul>
                         <?php endif; ?>
 
-                    <ul class="nav navbar-nav navbar-right">
 
-                        <?php if ($this->isLoggedIn) : ?>
-                            <li><a id="logged-in-info"><span>Hello,<a href="<?=APP_ROOT?>/users/profile">
-                                    <b><?=htmlspecialchars($_SESSION['username'])?></b></a></span></li>
-                            <li><form method="post" action="<?=APP_ROOT?>/users/logout">
-                                    <button type="submit" value="Logout" class="btn">Logout</button></form></li>
-                            </a>
-                        <?php endif; ?>
+
                     </ul>
 
                 </div>
@@ -87,6 +96,7 @@
         </nav>
 
     </header>
+
     <div class="container">
         <div class="row">
         </div>
