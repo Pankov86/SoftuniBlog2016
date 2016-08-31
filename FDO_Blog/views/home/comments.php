@@ -20,10 +20,11 @@
                         <td><?= htmlspecialchars($comment['comment_body'])?></td>
                         <td><?= htmlspecialchars($comment['date'])?></td>
 
-                        <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $comment['author_id']) : ?>
+                        <?php if ((isset($_SESSION['user_id']) && $_SESSION['user_id'] == $comment['author_id']) ||
+                            (isset($_SESSION['user_id']) && $_SESSION['group_name'] == 'admin')) : ?>
 
                             <td>
-                                <a href="<?=APP_ROOT?>/home/deleteComment/<?=$comment['id']?>">[Delete]</a>
+                                <a href="<?=APP_ROOT?>/home/deleteComment/<?=$comment['id']?>">[Delete comment]</a>
                             </td>
                         <?php endif; ?>
                     </tr>
