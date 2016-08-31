@@ -1,44 +1,64 @@
 <?php $this->title = 'Create new post'; ?>
 
-<h1><?=htmlspecialchars($this->title)?></h1>
-<aside>
-    <h3>Rules for posting</h3>
-    <ul>-Don't spam</ul>
-    <ul>-Don't use profanity</ul>
-    <ul>-Your post must be related to the category </ul>
-</aside>
-<form method="post">
-    <div>Select category</div>
-    <select name="category" >
-        <?php $categories = $this->model->getCategories() ?>
-        <option value="<?= $categories[0]['id'] ?>" selected="selected"><?= $categories[0]['category_name'] ?></option>
+<form class="form-horizontal" method="post">
+    <fieldset>
+        <legend><h1><?=htmlspecialchars($this->title)?></h1>
+        </legend>
+        <aside>
+            <h3>Rules for posting</h3>
+            <ul>-Don't spam</ul>
+            <ul>-Don't use profanity</ul>
+            <ul>-Your post must be related to the category </ul>
+        </aside>
 
-        <?php for ($i = 1; $i < count($categories); $i++): ?>
-            <option value="<?=$categories[$i]['id'] ?>" ><?= $categories[$i]['category_name'] ?></option>
-        <?php endfor; ?>
-    </select>
+        <div class="form-group">
+            <label for="inputEmail" class="col-lg-2 control-label">Title:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputEmail" name="post_title" placeholder="Your title">
+            </div>
+        </div>
 
-    <div>Title:</div>
-    <input type="text" name="post_title">
+        <div class="form-group">
+            <label for="textArea" class=" col-lg-2 control-label">Textarea</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="5" id="textArea" placeholder="Your text"></textarea>
+            </div>
+        </div>
 
-    <div>Choose a tag:</div>
-    <div>
-        <input id="tags" name="tag_name" list="tag_suggestions">
-        <?php $tags = $this->model->getTags() ?>
+        <div class="form-group">
+            <label for="select" class="col-lg-2 control-label">Select category:</label>
+            <div class="col-lg-10">
+                <select class="form-control" id="select" name="category">
+                    <?php $categories = $this->model->getCategories() ?>
+                    <option value="<?= $categories[0]['id'] ?>" selected="selected"><?= $categories[0]['category_name'] ?></option>
 
-        <datalist id="tag_suggestions">
-            <?php $tags = $this->model->getTags();
-            foreach ($tags as $tag) : ?>
-                <option value="<?=$tag['tag_name'] ?>" ></option>
-            <?php endforeach; ?>
-        </datalist>
-    </div>
+                    <?php for ($i = 1; $i < count($categories); $i++): ?>
+                        <option value="<?=$categories[$i]['id'] ?>" ><?= $categories[$i]['category_name'] ?></option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="select" class="col-lg-2 control-label" name="tag_name" id="tags" list="tag_suggestions">Choose a tag:</label>
+            <div class="col-lg-10">
 
-    <div>Content:</div>
-    <textarea rows="10" name="post_content"></textarea>
+                <input class="form-control" id="tags" name="tag_name" list="tag_suggestions" placeholder="Pick or enter yours">
+                <?php $tags = $this->model->getTags() ?>
 
-    <br>
+                <datalist  id="tag_suggestions">
+                    <?php $tags = $this->model->getTags();
+                    foreach ($tags as $tag) : ?>
+                        <option value="<?=$tag['tag_name'] ?>" ></option>
+                    <?php endforeach; ?>
+                </datalist>
+            </div>
+        </div>
 
-    <div><input type="submit" value="Create post">
-        <a href="<?=APP_ROOT?>/posts">[Cancel]</a></div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default"><a href="<?=APP_ROOT?>/posts">Cancel</a></button>
+                <button type="submit" class="btn btn-primary">Create post</button>
+            </div>
+        </div>
+    </fieldset>
 </form>
