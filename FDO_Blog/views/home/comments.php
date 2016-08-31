@@ -13,8 +13,11 @@
                 <?php
                 foreach ($this->comments as $comment) : ?>
                     <tr>
-                        <td><?= htmlspecialchars($comment['id'])?></td>
-                        <td><?= htmlspecialchars($comment['full_name'])?></a></td>
+                        <?php if ($comment['full_name']) : ?>
+                            <td><?= htmlspecialchars($comment['full_name'])?></a></td>
+                        <?php elseif (!$comment['full_name']) : ?>
+                            <td><i>Anonymous</i></td>
+                        <?php endif; ?>
                         <td><?= htmlspecialchars($comment['comment_body'])?></td>
                         <td><?= htmlspecialchars($comment['date'])?></td>
 

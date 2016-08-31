@@ -8,6 +8,9 @@
             <th>Reads</th>
             <th>Comments</th>
             <th>Points</th>
+            <?php if ($_SESSION['group_name'] == 'admin') : ?>
+                <th>Action</th>
+            <?php endif; ?>
         </tr>
 
         <?php foreach ($this->posts as $post) : ?>
@@ -19,6 +22,11 @@
                 <td><?= htmlspecialchars($post['views_count'])?></td>
                 <td><?= htmlspecialchars($post['comments_count'])?></td>
                 <td><?= htmlspecialchars($post['points'])?></td>
+                
+                <?php if ($_SESSION['group_name'] == 'admin') : ?>
+                    <td><a href="<?= APP_ROOT?>/posts/delete/<?= $post['id'] ?>">Delete post</a></td>
+                    <td><a href="<?= APP_ROOT?>/posts/edit/<?= $post['id'] ?>">Edit post</a></td>
+                <?php endif; ?>
             </tr>
         <?php endforeach; ?>
     </table>

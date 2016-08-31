@@ -39,7 +39,6 @@
                 } else {
                     ?>
                     <input type="submit" value="I give a fuck" name="vote-button"/>
-
                     <?php
                 }
             }
