@@ -7,8 +7,12 @@
         <?= htmlentities($this->post['date']); ?>
         <i>by</i>
         <?= htmlentities($this->post['full_name']); ?>
-        <i> // Last edit: </i>
-        <?= htmlentities($this->post['date_edited']); ?>
+
+        <?php if ($this->post['date_edited'] != '0000-00-00 00:00:00') :?>
+            <i> // Last edit: </i>
+            <?= htmlentities($this->post['date_edited']); ?>
+        <?php endif; ?>
+
     </p>
     <p><?= $this->post['content']; ?></p>
 
@@ -30,11 +34,11 @@
                 }
 
                 if ($this->model->isVote($this->post['id'], $user_id)) { ?>
-                    <input type="submit" value="Unvote" name="unvote-button"/>
+                    <input type="submit" value="I don't give a fuck" name="unvote-button"/>
                     <?php
                 } else {
                     ?>
-                    <input type="submit" value="Vote" name="vote-button"/>
+                    <input type="submit" value="I give a fuck" name="vote-button"/>
 
                     <?php
                 }

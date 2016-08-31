@@ -160,7 +160,7 @@ class HomeModel extends BaseModel
         $statement->execute();
 
         $statement = self::$db->prepare(
-            "SELECT posts.id, title, content, date, full_name, points ".
+            "SELECT posts.id, title, content, date, full_name, points, date_edited ".
             "FROM posts LEFT JOIN users On posts.user_id = users.id ".
             "WHERE posts.id = ?");
         $statement->bind_param("i", $id);
