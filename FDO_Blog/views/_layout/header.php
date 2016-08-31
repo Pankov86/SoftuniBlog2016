@@ -4,7 +4,8 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet"  href="<?=APP_ROOT?>/content/styles/styles.css" type="text/css"/>
-        <link rel="icon" href="<?=APP_ROOT?>/content/images/favicon.ico" />
+
+        <link rel="icon" href="<?=APP_ROOT?>/content/images/site-logo.png" />
         <script src="<?=APP_ROOT?>/content/scripts/jquery-3.0.0.min.js"></script>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -17,13 +18,13 @@
         <h1>First Dollar Online</h1>
         <p>A blog about business</p>
     </div>
-
     <header class="container">
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-inverse">
             <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand"
-                       href="<?=APP_ROOT?>"><img src="<?=APP_ROOT?>/content/images/site-logo.png"/>
+                <div class="navbar-brand">
+                    <a href="<?=APP_ROOT?>/home">
+                        <img src="<?=APP_ROOT?>/content/images/site-logo.png" width="27px" />
+                    </a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
@@ -65,7 +66,7 @@
                             <li> <a href="<?=APP_ROOT?>/posts/create">Create Post</a></li>
                         <?php endif; ?>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right" >
                         <?php if ($this->isLoggedIn) : ?>
                             <li><a>Hello,</a></li>
                             <li>
@@ -76,18 +77,14 @@
                                     <a type="submit"
                                        href="<?=APP_ROOT?>/users/logout" class="btn btn-default btn-size-xs">Logout</a>
                             </li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
 
                         <?php else: ?>
                             <li><a href="<?=APP_ROOT?>/users/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                             <li><a href="<?=APP_ROOT?>/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        </ul>
-                        <?php endif; ?>
-
-
-
                     </ul>
+                        <?php endif; ?>
 
                 </div>
 
