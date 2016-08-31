@@ -62,6 +62,7 @@ class AdminModel extends BaseModel
         return $result;
     }
 
+
 //    public function deleteUser(int $id) : bool
 //    {
 //        $this->deleteUserFromActivity($id);

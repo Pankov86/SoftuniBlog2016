@@ -19,7 +19,10 @@ class UsersController extends BaseController
                 // Change password
                 $user_id = $this->model->getIdByEmail($email);
                 if ($isRegistered){
-                    $this->changePasswordWithoutLogin($user_id, $new_password, $confirm_password);
+                        $this->changePasswordWithoutLogin($user_id, $new_password, $confirm_password);
+                }
+                else{
+                    $this->addErrorMessage("This email is not registered.");
                 }
             }
         }
@@ -208,14 +211,17 @@ class UsersController extends BaseController
 
             if (strlen($username) <= 2){
                 $this->setValidationError("username", "Username too short.");
+                $this->addErrorMessage("Error: Username too short.");
                 return;
             }
             if (strlen($password) <= 2){
                 $this->setValidationError("password", "Password too short.");
+                $this->addErrorMessage("Error: Password too short.");
                 return;
             }
             if ($password != $confirm_password){
                 $this->setValidationError("confirm_password", "Passwords do not match.");
+                $this->addErrorMessage("Error: Passwords do not match.");
                 return;
             }
 
@@ -303,11 +309,16 @@ class UsersController extends BaseController
         $this->redirect('');
     }
 
-    public function profile()
+    public function profile($id = 0)
     {
-        $this->authorize();
+        //$this->authorize();
+        if (!$id){
+            $id = $_SESSION['user_id'];
+        }
+        else{
+            $id = intval($id);
+        }
 
-        $id = $_SESSION['user_id'];
         $this->user_info = $this->model->getUserInfo($id);
     }
 

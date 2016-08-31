@@ -66,7 +66,7 @@ class HomeModel extends BaseModel
 
     public function getAllPosts(){
         $statement = self::$db->query(
-            "SELECT p.id, p.title, p.content, p.date, u.full_name "
+            "SELECT p.id, p.title, p.content, p.date, p.user_id, u.full_name "
             ."FROM posts p LEFT JOIN users u "
             ."ON p.user_id = u.id "
             ."ORDER by date");

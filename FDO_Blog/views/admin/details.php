@@ -16,14 +16,4 @@
     <li>About me: <?=$user_info['About']?></li>
 </ul>
 
-<!--<form method="post" action="--><?//=APP_ROOT?><!--/users/edit">-->
-<!--    <button type="submit" onsubmit="--><?php //$this->model-> ?><!--">-->
-<!--        --><?php //if ($user_info['group_name'] == 'user') :?>
-<!--        Make moderator-->
-<!--        --><?php //else : ?>
-<!--        Make user-->
-<!--        --><?php //endif; ?>
-<!--    </button>-->
-<!--</form>-->
-
 <a href="<?=APP_ROOT?>/admin/delete/<?= $user_info['id']?>">Delete user</a>
