@@ -14,7 +14,7 @@
     <body>
     <div class="jumbotron text-center">
         <h1>First Dollar Online</h1>
-        <p>Place motto here :)</p>
+        <p>A blog about business</p>
     </div>
 
     <header class="container">
