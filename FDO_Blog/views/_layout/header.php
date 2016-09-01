@@ -21,11 +21,11 @@
     <header class="container">
         <nav class="navbar navbar-inverse">
             <div class="container">
-                <div class="navbar-brand">
-                    <a href="<?=APP_ROOT?>/home">
-                        <img src="<?=APP_ROOT?>/content/images/site-logo.png" width="27px" />
-                    </a>
-                </div>
+<!--                <div class="navbar-brand">-->
+<!--                    <a href="--><?//=APP_ROOT?><!--/home">-->
+<!--                        <img src="--><?//=APP_ROOT?><!--/content/images/site-logo.png" width="27px" />-->
+<!--                    </a>-->
+<!--                </div>-->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="<?=APP_ROOT?>/">Home <span class="sr-only"></span></a></li>
