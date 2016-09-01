@@ -4,9 +4,11 @@
 <p>All posts of this user will be saved and can be restored in the future.</p>
 
 <form method="post">
-    <input type="submit" value="Delete user">
-    <a href="<?= APP_ROOT?>/admin/details/<?= $this->user_id?>">Cancel</a>
+    <button type="submit" class="btn btn-primary">Delete user</button>
+    <button type="reset" class="btn btn-default"><a href="<?= APP_ROOT?>/admin/details/<?= $this->user_id?>">Cancel</a></button>
 </form>
+
+
 
 
 
