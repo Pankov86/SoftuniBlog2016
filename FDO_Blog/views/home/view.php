@@ -1,7 +1,7 @@
 <?php $this->title = $this->post['title']; ?>
 
 <main>
-    <h1><?= htmlentities($this->post['title']); ?></h1>
+    <legend><h1><?= htmlentities($this->post['title']); ?></h1></legend>
     <p>
         <i>Posted on</i>
         <?= htmlentities($this->post['date']); ?>
@@ -34,11 +34,11 @@
                 }
 
                 if ($this->model->isVote($this->post['id'], $user_id)) { ?>
-                    <input type="submit" value="I don't give a fuck" name="unvote-button"/>
+                    <input type="submit" value="I don't give a fuck" name="unvote-button" class="btn"/>
                     <?php
                 } else {
                     ?>
-                    <input type="submit" value="I give a fuck" name="vote-button"/>
+                    <input type="submit" value="I give a fuck" name="vote-button" class="btn"/>
                     <?php
                 }
             }
