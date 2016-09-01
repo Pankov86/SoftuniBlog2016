@@ -29,7 +29,7 @@
         <div class="col-lg-10 col-lg-offset-2">
             <button type="submit" class="btn btn-primary" onsubmit="<?=$this->editUserInfo() ?>">Save changes</button>
 
-            <button type="reset" class="btn btn-default"><a href="<?=APP_ROOT?>/admin">Cancel</a></button>
+            <button type="reset" class="btn btn-default"><a href="<?=APP_ROOT?>/users/profile">Cancel</a></button>
         </div>
     </div>
 </form>
