@@ -3,22 +3,23 @@
 <legend><h1><?=htmlspecialchars($this->title)?></h1></legend>
 
 <?php $user_info = $this->user_info ?>
-<a href="<?=APP_ROOT?>/admin/delete/<?= $user_info['id']?>">Delete user</a>
-
-<ul>
-    <li>Username: <?=$user_info['username']?></li>
-    <li>Full name: <?=$user_info['full_name']?></li>
-    <li>Email: <?= $user_info['email']?></li>
-    <li>User role: <?=$user_info['group_name']?></li>
-    <li>Comments count: <?=$user_info['comments_count']?></li>
-    <li>Points: <?=$user_info['posts_count']?></li>
-    <li>Fucks given: <?=$user_info['points_given_by_user']?></li>
-    <li>Points: <?=$user_info['comments_count'] + $user_info['posts_count'] + $user_info['points_given_by_user']?></li>
-    <li>About me: <?=$user_info['About']?></li>
+<a class=" btn btn-default" href="<?=APP_ROOT?>/admin/delete/<?= $user_info['id']?>">Delete user</a>
+<br>
+ <br>
+<ul class="list-group">
+    <li class="list-group-item">Username:<b><?=$user_info['username']?></b></li>
+    <li class="list-group-item">Full name: <b><?=$user_info['full_name']?></b></li>
+    <li class="list-group-item">Email: <b><?= $user_info['email']?></b></li>
+    <li class="list-group-item">User role: <b><?=$user_info['group_name']?></b></li>
+    <li class="list-group-item">Comments count: <b><?=$user_info['comments_count']?></b></li>
+    <li class="list-group-item">Points: <b><?=$user_info['posts_count']?></b></li>
+    <li class="list-group-item">Fucks given: <b><?=$user_info['points_given_by_user']?></b></li>
+    <li class="list-group-item">Points: <b><?=$user_info['comments_count'] + $user_info['posts_count'] + $user_info['points_given_by_user']?></b></li>
+    <li class="list-group-item">About me: <b><?=$user_info['About']?></b></li>
 </ul>
 
-<table class="table table-responsive">
-    <tr >
+<table class="table table-responsive table-hover">
+    <tr>
         <th>Title</th>
         <th>Content</th>
         <th>Date</th>
