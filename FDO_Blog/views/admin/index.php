@@ -3,7 +3,7 @@
 <?php $this->title = "All users"; ?>
 <legend><h1><?=htmlspecialchars($this->title)?></h1></legend>
 
-<table class="table">
+<table class="table table-striped table-hover ">
     <tr>
         <th>Username</th>
         <th>Email</th>
