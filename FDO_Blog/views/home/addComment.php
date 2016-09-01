@@ -1,9 +1,18 @@
-<form id="comment-form" method="post">
+<form id="comment-form" method="post" class="form-horizontal">
     <div><h3>Add new comment</h3></div>
-    <textarea name="comment_content" cols="50" rows="5" placeholder="Write your comment" required
-    ></textarea>
-    <div><input type="submit" value="Add comment" onsubmit="<?=
+
+
+    <div class="form-group">
+        <div class="col-lg-4">
+            <textarea class="form-control" rows="5" id="textArea" name="comment_content"
+                      placeholder="Write your comment" required></textarea>
+        </div>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary" onsubmit="<?=
         $id = $this->post['id'];
-        $this->addComment($id)?>">
-        <a href="<?=APP_ROOT?>/home/view/<?=$this->post['id']?>">[Delete text]</a></div>
+        $this->addComment($id)?>">Add comment</button>
+         <button type="reset" class="btn btn-default">
+            <a href="<?=APP_ROOT?>/home/view/<?=$this->post['id']?>">Delete text</a></button></div>
 </form>
