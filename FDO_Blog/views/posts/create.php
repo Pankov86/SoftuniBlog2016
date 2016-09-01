@@ -13,14 +13,14 @@
 
         <div class="form-group">
             <label for="inputEmail" class="col-lg-2 control-label">Title:</label>
-            <div class="col-lg-10">
+            <div class="col-lg-6">
                 <input type="text" class="form-control" id="inputEmail" name="post_title" placeholder="Your title">
             </div>
         </div>
 
         <div class="form-group">
             <label for="textArea" class=" col-lg-2 control-label">Textarea</label>
-            <div class="col-lg-10">
+            <div class="col-lg-6">
                 <textarea class="form-control" rows="5" id="textArea" name="post_content" placeholder="Your text" ></textarea>
             </div>
         </div>
@@ -28,7 +28,7 @@
 
         <div class="form-group">
             <label for="select" class="col-lg-2 control-label">Select category:</label>
-            <div class="col-lg-10">
+            <div class="col-lg-6">
                 <select class="form-control" id="select" name="category">
                     <?php $categories = $this->model->getCategories() ?>
                     <option value="<?= $categories[0]['id'] ?>" selected="selected"><?= $categories[0]['category_name'] ?></option>
@@ -42,7 +42,7 @@
         </div>
         <div class="form-group">
             <label for="select" class="col-lg-2 control-label" name="tag_name" id="tags" list="tag_suggestions">Choose a tag:</label>
-            <div class="col-lg-10">
+            <div class="col-lg-6">
 
                 <?php $tags = $this->model->getTags() ?>
 
@@ -57,8 +57,8 @@
 
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
-                <button type="reset" class="btn btn-default"><a href="<?=APP_ROOT?>/posts">Cancel</a></button>
                 <button type="submit" class="btn btn-primary">Create post</button>
+                <button type="reset" class="btn btn-default"><a href="<?=APP_ROOT?>/posts">Cancel</a></button>
             </div>
         </div>
     </fieldset>
