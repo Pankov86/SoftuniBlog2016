@@ -12,6 +12,7 @@ class AdminController extends BaseController
         $this->authorizeAdmin();
         $id = intval($id);
         $this->user_info = $this->model->getUserInfo($id);
+        $this->posts = $this->model->getUserPosts($id);
     }
 
     public function delete($id)
@@ -47,8 +48,9 @@ class AdminController extends BaseController
             $title = $post['title'];
             $content = $post['content'];
             $user_id = $post['user_id'];
+            $username = $post['username'];
 
-            $result = $this->model->restorePost($id, $title, $content, $user_id);
+            $result = $this->model->restorePost($id, $title, $content, $user_id, $username);
 
             if ($result){
                 $this->addInfoMessage("Post successfully restored.");

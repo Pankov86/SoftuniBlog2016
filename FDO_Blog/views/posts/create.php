@@ -21,9 +21,10 @@
         <div class="form-group">
             <label for="textArea" class=" col-lg-2 control-label">Textarea</label>
             <div class="col-lg-10">
-                <textarea class="form-control" rows="5" id="textArea" placeholder="Your text"></textarea>
+                <textarea class="form-control" rows="5" id="textArea" name="post_content" placeholder="Your text" ></textarea>
             </div>
         </div>
+
 
         <div class="form-group">
             <label for="select" class="col-lg-2 control-label">Select category:</label>
@@ -31,6 +32,7 @@
                 <select class="form-control" id="select" name="category">
                     <?php $categories = $this->model->getCategories() ?>
                     <option value="<?= $categories[0]['id'] ?>" selected="selected"><?= $categories[0]['category_name'] ?></option>
+
 
                     <?php for ($i = 1; $i < count($categories); $i++): ?>
                         <option value="<?=$categories[$i]['id'] ?>" ><?= $categories[$i]['category_name'] ?></option>
@@ -42,15 +44,14 @@
             <label for="select" class="col-lg-2 control-label" name="tag_name" id="tags" list="tag_suggestions">Choose a tag:</label>
             <div class="col-lg-10">
 
-                <input class="form-control" id="tags" name="tag_name" list="tag_suggestions" placeholder="Pick or enter yours">
                 <?php $tags = $this->model->getTags() ?>
 
-                <datalist  id="tag_suggestions">
+                <select class="form-control" id="tags" name="tag_name" list="tag_suggestions" placeholder="Pick a tag" id="tag_suggestions">
                     <?php $tags = $this->model->getTags();
                     foreach ($tags as $tag) : ?>
-                        <option value="<?=$tag['tag_name'] ?>" ></option>
+                        <option value="<?=$tag['tag_name'] ?>" ><?=$tag['tag_name'] ?></option>
                     <?php endforeach; ?>
-                </datalist>
+                </select>
             </div>
         </div>
 

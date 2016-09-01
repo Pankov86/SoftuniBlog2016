@@ -2,8 +2,8 @@
 
 <legend><h1><?=htmlspecialchars($this->title)?></h1></legend>
 
-
 <?php $user_info = $this->user_info ?>
+<a href="<?=APP_ROOT?>/admin/delete/<?= $user_info['id']?>">Delete user</a>
 
 <ul>
     <li>Username: <?=$user_info['username']?></li>
@@ -17,4 +17,30 @@
     <li>About me: <?=$user_info['About']?></li>
 </ul>
 
-<a href="<?=APP_ROOT?>/admin/delete/<?= $user_info['id']?>">Delete user</a>
+<table class="table table-responsive">
+    <tr >
+        <th>Title</th>
+        <th>Content</th>
+        <th>Date</th>
+        <th>Reads</th>
+        <th>Comments</th>
+        <th>Points</th>
+        <th>Action</th>
+    </tr>
+
+    <?php foreach ($this->posts as $post) : ?>
+        <tr>
+            <td><a href="<?=APP_ROOT?>/home/view/<?=$post['id']?>"><?= htmlentities($post['title']); ?></a></td>
+            <td><?= html_entity_decode($post['content'])?></td>
+            <td><?= htmlspecialchars($post['date'])?></td>
+            <td><?= htmlspecialchars($post['views_count'])?></td>
+            <td><?= htmlspecialchars($post['comments_count'])?></td>
+            <td><?= htmlspecialchars($post['points'])?></td>
+            <td><a href="<?= APP_ROOT?>/posts/delete/<?= $post['id'] ?>">Delete post</a></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+
+
+
+

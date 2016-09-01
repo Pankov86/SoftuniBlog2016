@@ -1,3 +1,5 @@
+
+
 <?php $this->title = "All users"; ?>
 <legend><h1><?=htmlspecialchars($this->title)?></h1></legend>
 
