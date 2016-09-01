@@ -2,7 +2,7 @@
 
 <h1><?= htmlspecialchars($this->title)?></h1>
 
-<table>
+<table class="table table-striped ">
     <tr>
         <th>ID</th>
         <th>Username</th>
